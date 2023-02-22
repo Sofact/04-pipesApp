@@ -1,0 +1,84 @@
+<div class="text-layout">
+    <h1>Pagos</h1>
+
+</div>
+<div class="grid">
+    <div class="p-col md-6 ">
+        
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                Saludos {{nombre}}, es un placer 
+               
+                a nuestro evento.
+            </p>
+            <button 
+                pButton type="button"  
+                class="p-button-outlined"
+                class="p-button-help"
+                (click)="cambiar()">
+                Cambiar Persona
+            </button>
+        </p-fieldset>
+    </div>
+    <div class="p-col md-6 ">
+        
+        <p-fieldset legend="i18n Plural pipe" [toggleable]="true">
+           <p>
+            Actualmente tenemos {{ clientes.length}} 
+           </p>
+           <button 
+                pButton type="button"  
+                class="p-button-outlined"
+                class="p-button-help"
+                (click)="quitar()">
+                Quitar personas
+           </button>
+        </p-fieldset>
+    </div>
+    <div class="p-col md-6 ">
+        
+        <p-fieldset legend="Slice pipe" [toggleable]="true">
+           <b>
+           Original
+           
+           <pre>{{clientes}}</pre>
+           
+
+           <b>
+                slice:0:2
+           </b>
+           <pre> {{clientes }} </pre>
+        </b>
+           <button 
+                pButton type="button"  
+                class="p-button-outlined"
+                class="p-button-help"
+                (click)="quitar()">
+                Quitar personas
+           </button>
+        </p-fieldset>
+    </div>
+
+    <div class="p-col md-6 ">
+        
+        <p-fieldset legend="Key value pipe" [toggleable]="true">
+          <ul>
+            <li *ngFor="let index of persona | keyvalue">
+
+                {{index.key}}: {{index.value}}
+                {{index }}
+            </li>
+          </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="p-col md-6 ">
+        
+        <p-fieldset legend="Interval pipe" [toggleable]="true">
+          {{miObservable }}
+          <pre *ngIf="!(valorPromesa | async) ">Procesando promesa</pre>
+          {{valorPromesa}}
+        </p-fieldset>
+    </div>
+
+</div>

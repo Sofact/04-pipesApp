@@ -1,0 +1,58 @@
+<div class="card">
+  
+    <p-table #dt1 [value]="productos" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['proDescripcion','proReferencia','proValor']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+               <h3>Resumen de productos</h3>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Producto
+                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        SKU
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Valor Comision
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                             
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-producto>
+            <tr>
+                <td>
+                    {{producto.proDescripcion}}
+                </td>
+                <td>
+                    {{producto.proReferencia}}
+                </td>
+                <td>
+                    {{producto.proValor}}               
+                </td>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se encontraron productos</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

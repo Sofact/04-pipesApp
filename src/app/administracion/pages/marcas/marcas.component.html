@@ -1,0 +1,41 @@
+
+<div class="card surface-100">       
+
+    <div class="grid ">
+        <div class="col-12 md:col-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text"  placeholder="Marca" [(ngModel)]="nombre">         
+            </div>
+        </div>
+        
+        <div>
+            <p-button icon="pi pi-plus"
+                        (click)="agregar()"></p-button>
+        </div>     
+    </div>
+
+
+</div>
+
+<div class="colo-12">
+    <p-table [value]="marcas" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Marca</th>
+                <th>Estado</th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-marcas>
+            <tr>
+                <td>{{marcas.marDescripcion}}</td>
+                <td>{{marcas.marEstado}}</td>
+                <td><i class="pi pi-pencil"
+                        (click)="editar()"></i>
+                        <i class="pi pi-delete-left"
+                        (click)="borrar(marcas.marId)"></i></td>
+            </tr>
+        </ng-template> 
+    </p-table>
+</div>

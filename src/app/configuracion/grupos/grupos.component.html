@@ -1,0 +1,25 @@
+<div class="grid">
+    <div class="col-3">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-9">
+        <div class="card">
+            <h1>Convenios</h1>
+            <p-tabView>
+                <p-tabPanel header="Resumen" leftIcon="pi pi-calendar" tooltip="1972">
+                <app-comision-resumen></app-comision-resumen>
+                </p-tabPanel>
+                <p-tabPanel header="Validar Usuarios" leftIcon="pi pi-calendar" tooltip="1972">
+                <app-comision-validar></app-comision-validar>
+                </p-tabPanel>
+                <p-tabPanel header="Comisiones" rightIcon="pi pi-inbox" tooltip="1974">
+                <app-comision-convenio ></app-comision-convenio>
+                </p-tabPanel>
+                <p-tabPanel header="Pagos" leftIcon="pi pi-money-bill" rightIcon="pi pi-star-fill" tooltip="1990">
+                    <app-comision-pagos></app-comision-pagos>
+                </p-tabPanel>
+            </p-tabView>
+            </div>
+
+        </div>
+</div>

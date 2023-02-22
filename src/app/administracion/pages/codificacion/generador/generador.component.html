@@ -1,0 +1,20 @@
+
+<div class="card">
+
+    <p-dropdown [options]="productos" [(ngModel)]="selectedProducto" optionLabel="proDescripcion"></p-dropdown>
+   <br>
+    <div>
+        <br>
+        <h5>Cantidad de Códigos a generar: {{val}}</h5>
+        <p-slider [(ngModel)]="val"></p-slider>
+    </div>
+    <br>
+    <div>
+        <p-button icon="pi pi-plus"
+        (click)="agregar()"></p-button>
+    </div>
+</div>
+<div class="colo-12">
+  
+    <app-table></app-table>
+</div>

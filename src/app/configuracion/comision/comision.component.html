@@ -1,0 +1,110 @@
+<div class="grid">
+    <div class="col-4">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-48">
+<div class="grid"  >
+    <div class="col-8">
+        <h3>Comisión por defecto</h3>
+        <p>Aplica para todos los productos afiliados y grupos</p>
+    </div>
+
+    <div class="col-4" *ngIf="this.isButtonVisible">
+        <h3>{{valorImput}}<span *ngIf="this.mostrar">%</span></h3>
+        <button 
+            pButton 
+            type="button" 
+            label="Cambiar" 
+            class="p-button-outlined"
+            (click)="cambiar()"
+            >
+        </button>
+
+    </div>
+
+    <div class="col-4" *ngIf="!this.isButtonVisible" >
+        <p-dropdown [options]="tipos" [(ngModel)]="selectedTipo" name="tipolog"  optionLabel="name" ></p-dropdown>
+        <div class="p-inputgroup">
+            <p-inputNumber [(ngModel)]="valorImput" mode="decimal" locale="en-US" [minFractionDigits]="2" ></p-inputNumber>
+
+        </div>
+
+        <button 
+            pButton 
+            type="button" 
+            label="Guardar" 
+            class="p-button-outlined"
+            (click)="guardar()"
+            >
+        </button>
+    </div>
+
+</div>
+<hr>
+<div class="grid"  >
+    <div class="col-8">
+        <h3>Comisión de afiliados</h3>
+        <p>Afiliados con comisión diferente a la predeterminada</p>
+    </div>
+    <div class="col-4" >
+        
+        <button 
+            pButton type="button" 
+            label="Cambiar" 
+            class="p-button-outlined"
+            [routerLink]="'/comisionAfiliado'"
+            ></button>
+    </div>
+</div>
+<hr>
+<div class="grid"  >
+    <div class="col-8">
+        <h3>Comisión por producto</h3>
+        <p>Establecer diferentes comisiones para diferentes productos</p>
+    </div>
+    <div class="col-4" >
+        
+        <button 
+            pButton 
+            type="button" 
+            label="Cambiar" 
+            class="p-button-outlined"
+            [routerLink]="'/comisionProducto'"></button>
+    </div>
+</div>
+<hr>
+
+<div class="grid"  >
+    <div class="col-8">
+        <h3>Comisión por Marca</h3>
+        <p>Establecer diferentes comisiones para cada marca</p>
+    </div>
+    <div class="col-4" >
+        
+        <button 
+            pButton 
+            type="button" 
+            label="Cambiar" 
+            class="p-button-outlined"
+            [routerLink]="'/comisionMarca'"></button>
+    </div>
+</div>
+<hr>
+<div class="grid"  >
+    <div class="col-8">
+        <h3>Comisión por linea de producto</h3>
+        <p>Establecer diferentes comisiones para cada linea de producto</p>
+    </div>
+    <div class="col-4" >
+        
+        <button 
+            pButton 
+            type="button" 
+            label="Cambiar" 
+            class="p-button-outlined"
+            [routerLink]="'/comisionLinea'"></button>
+    </div>
+</div>
+</div>
+</div>
+

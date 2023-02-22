@@ -1,0 +1,51 @@
+
+<div class="card surface-100">       
+
+    <div class="grid ">
+        <div class="col-12 md:col-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text"  placeholder="Nombre" [(ngModel)]="nombre">         
+            </div>
+        </div>
+        
+        <div class="col-12 md:col-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+                <input type="number" pInputText placeholder="Valor" [(ngModel)]="valor">         
+            </div>
+          
+            
+        </div>
+        <div>
+            <p-button icon="pi pi-plus"
+                        (click)="agregar()"></p-button>
+        </div>
+                
+       
+    </div>
+
+
+</div>
+
+<div class="colo-12">
+    <p-table [value]="taxes" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Valor</th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-taxes>
+            <tr>
+                <td>{{taxes.parDescripcion}}</td>
+                <td>{{taxes.parValor}}</td>
+                <td><i class="pi pi-pencil"
+                        (click)="editar()"></i>
+                        <i class="pi pi-delete-left"
+                        (click)="borrar(taxes.parId)"></i></td>
+            </tr>
+        </ng-template> 
+    </p-table>
+</div>

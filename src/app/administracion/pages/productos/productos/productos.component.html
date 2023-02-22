@@ -1,0 +1,27 @@
+
+<div class="card surface-100 p-fluid">
+
+
+  <div class="p-inputgroup">
+    <span class="p-inputgroup-addon"><i class="pi pi-shopping-cart"></i></span>
+    <input type="text" class="primary" pInputText placeholder="Producto" [(ngModel)]="descripcion">         
+
+    <span class="p-inputgroup-addon"><i class="pi pi-tags"></i></span>
+    <input type="text" class="primary" pInputText placeholder="SKU" [(ngModel)]="sku">    
+    
+    <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+    <input type="text" class="primary" pInputText placeholder="comision" [(ngModel)]="valor">  
+    
+    <div>
+        <p-button icon="pi pi-plus"
+                    (click)="agregar()"></p-button>
+    </div>
+</div>
+
+<div>
+  <app-tableProducto></app-tableProducto>
+</div>
+
+
+
+</div>

@@ -1,0 +1,30 @@
+<div class="card">
+    <h5>Afiliados</h5>
+    <p-table [value]="convenios" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '50rem'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Ordenes</th>
+                <th style="width:25%">Ingresos</th>
+                <th style="width:25%">Comisiones</th>
+                <th style="width:25%">Pendientes pago</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-convenios>
+            <tr>
+                <td><a [routerLink]="'/ventas'">{{convenios.nombre}}</a></td>
+                <td>3</td>
+                <td>{{convenios.codigo}}</td>
+                <td>{{convenios.valor}}</td>
+                <td>0.0</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
