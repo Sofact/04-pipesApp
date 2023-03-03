@@ -9,10 +9,14 @@ import { map, Observable } from 'rxjs';
 export class CodigosService {
 
 
-  private urlEndpoint: string = 'http://localhost:8090/codigos/all';
-  private urlSaveEndpoint: string = 'http://localhost:8090/codigos/save';
+  private urlEndpoint: string = '/codigos/all';
+  private urlSaveEndpoint: string = '/codigos/save';
+  private urlUpdateEndpoint: string ='/codigos/update';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
+          .append('Access-Control-Allow-Origin', '*')
+          .append('Access-Control-Allow-Methods','GET, POST, PATCH, PUT, DELETE, OPTIONS');
+
 
 
 
@@ -31,4 +35,9 @@ export class CodigosService {
     return this.http.post<Codigo>(this.urlSaveEndpoint, codigo, {headers: this.httpHeaders});
    
    }
+
+   updateCodigo(code: string): Observable<Codigo>{
+  
+    return this.http.put<Codigo>(this.urlUpdateEndpoint+"/"+code, {headers: this.httpHeaders});
+  }
 }
