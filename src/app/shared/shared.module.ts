@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CustomerService } from './customer.service';
 
+
 @NgModule({
   declarations: [
     MenuComponent,

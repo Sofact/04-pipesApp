@@ -1,12 +1,37 @@
 <div class="card">
   
+    <div>
+        
+        <div class="card flex flex-column md:flex-row gap-3">
+           <div >
+        <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="search($event)">
+            
+        </p-autoComplete>
+        </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">$</span>
+                <input type="text" pInputText placeholder="Valor a filtrar" />
+                <span class="p-inputgroup-addon">.00</span>
+            </div>
+    
+           <div class="p-inputgroup">
+            
+                <p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar>
+           </div>
+           <div class="p-inputgroup">
+            
+                <p-button label="Descargar" icon="pi pi-download"></p-button>
+    
+           </div>
+        </div>
+        </div>
     <p-table #dt1 [value]="viewPago" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['proDescripcion','proReferencia','proValor']">
         <ng-template pTemplate="caption">
             <div class="flex">
-               <h3>Comisiones pendientes de pago</h3>
+               <h3>Historial de pagos</h3>
             </div>
         </ng-template>
         <ng-template pTemplate="header">

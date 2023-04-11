@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/shared/models/Cliente';
 import { ClientesService } from '../../../services/clientes.service';
 import { CodigosService } from '../../../services/codigos.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -23,6 +24,7 @@ export class RegistroComponent {
 
    code: string='';
    codCodigo: string='';
+   id: string | null = '';
 
   cliSexo: string[]=['Hombre', 'Mujer'];
 
@@ -40,17 +42,21 @@ export class RegistroComponent {
   );
 
 constructor(  private clienteService :ClientesService,
+              private authService: AuthService,
               private activatedRoute: ActivatedRoute,
               private codigoService: CodigosService,
               private fb: FormBuilder,
               private router: Router) { }
 
               ngOnInit() {
+
+                this.id = this.authService.getId();
                
                 this.activatedRoute.queryParams.subscribe( (params) => {
                 
                   this.code = params['code'];
                   this.codCodigo =  (this.code.substring(3));
+                 this.codCodigo = this.codCodigo+"codbearer"+this.id;
                 })
             }
   login(){
@@ -67,9 +73,6 @@ constructor(  private clienteService :ClientesService,
 
     this.clienteService.saveCliente(this.cliente)
     .subscribe(response =>this.router.navigateByUrl('/userDashboard'));
-
-    
-    
 
 
   }

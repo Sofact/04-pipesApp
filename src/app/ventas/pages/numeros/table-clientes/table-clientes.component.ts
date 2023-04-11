@@ -18,6 +18,7 @@ import { ViewVentasService } from '../../../../services/view-ventas.service';
 export class TableClientesComponent implements OnInit {
 
 
+  total =0;
 
   todayString : string = new Date().toDateString();
   viewVentas: ViewVentas[]=[];
@@ -27,11 +28,12 @@ export class TableClientesComponent implements OnInit {
   customers: Customer[]=[];
 
 
-  loading: boolean = true;
+  loading: boolean = false;
 
 
   constructor(  private customerService: CustomerService,
-                private viewVentasService: ViewVentasService
+                private viewVentasService: ViewVentasService,
+                
                 
                 ) { }
 
@@ -44,13 +46,12 @@ export class TableClientesComponent implements OnInit {
           this.viewVentas = respuesta;
         })
 
-          
-      this.customerService.getCustomersLarge().then((customers) => {
-        this.customers = customers;
-        this.loading = false;
-
-       
-    });
+        this.viewVentasService.getViewVentasTotalByUser(1)
+        .subscribe ((respuesta) => {
+        
+          this.total = respuesta;
+        }) 
+  
       
   }
 

@@ -24,6 +24,17 @@ export class HistorialComponent implements OnInit {
 
   total = 0;
 
+  items!: any[];
+
+  selectedItem: any;
+
+  suggestions!: any[];
+  date!: Date;
+
+  search(event:any) {
+      this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+  }
+
 
 
   customer: Customer | undefined;

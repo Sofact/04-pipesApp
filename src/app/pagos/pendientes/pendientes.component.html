@@ -1,9 +1,35 @@
 <div class="card">
   
+    <div>
+        
+    <div class="card flex flex-column md:flex-row gap-3">
+       <div >
+    <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="search($event)">
+        
+    </p-autoComplete>
+    </div>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">$</span>
+            <input type="text" pInputText placeholder="Valor a filtrar" />
+            <span class="p-inputgroup-addon">.00</span>
+        </div>
+
+       <div class="p-inputgroup">
+        
+            <p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar>
+       </div>
+       <div class="p-inputgroup">
+        
+            <p-button label="Descargar" icon="pi pi-download"></p-button>
+
+       </div>
+    </div>
+    </div>
+    
     <p-table #dt1 [value]="ViewPagosGrouped" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['proDescripcion','proReferencia','proValor']">
+        [globalFilterFields]="['usuNombre','sumValor','cliBanco']">
         <ng-template pTemplate="caption">
             <div class="flex">
                <h3>Comisiones pendientes de pago</h3>
@@ -14,19 +40,19 @@
                 <th style="min-width:10rem">
                     <div class="flex ">
                         Usuario
-                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="usuNombre" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex ">
                         Valor
-                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="sumValor" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex ">
                         Información Bancaria
-                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="cliBanco" display="menu"></p-columnFilter>
                     </div>
                 </th>
                

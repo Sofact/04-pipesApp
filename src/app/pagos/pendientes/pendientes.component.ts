@@ -33,6 +33,17 @@ export class PendientesComponent implements OnInit {
               private viewPagosgroupedService:  ViewPagosgroupedService
                 ) { }
 
+                items!: any[];
+
+                selectedItem: any;
+            
+                suggestions!: any[];
+                date!: Date;
+            
+                search(event:any) {
+                    this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+                }
+
   ngOnInit() {
 
       this.viewComisionService.getViewComisionEstado('pendiente')

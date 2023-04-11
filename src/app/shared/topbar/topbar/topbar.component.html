@@ -1,0 +1,22 @@
+<p-menubar >
+    
+    <ng-template pTemplate="start">
+        <h1>Selly Ca$h</h1>
+        <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+    </ng-template>
+    <ng-template >
+        <div><h1>Buen día {{user}}</h1></div>
+
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div>Buen día {{user}}   
+            
+
+            <p-button label="Salir" styleClass="p-button-raised p-button-text p-button-info" (click)="logout()"></p-button>
+
+           </div>
+
+    </ng-template>
+</p-menubar>
+
+

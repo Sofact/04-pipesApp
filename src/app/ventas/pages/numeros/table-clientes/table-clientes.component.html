@@ -3,7 +3,7 @@
     <p-table #dt1 [value]="viewVentas" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['proDescripcion','comFecha','comValor']">
+        [globalFilterFields]="['proDescripcion','comFecha','comValor', 'usuNombre', 'cliNombre', 'covNombre']">
         <ng-template pTemplate="caption">
             
         </ng-template>
@@ -32,7 +32,7 @@
                 <th style="min-width:10rem">
                     <div class="flex ">
                         Partner
-                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                        <p-columnFilter field="usuNombre" matchMode="in" display="menu" [showOperator]="false" >
                             
                         </p-columnFilter>
                     </div>
@@ -40,7 +40,7 @@
                 <th style="min-width:10rem">
                     <div class="flex ">
                         Cliente
-                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                        <p-columnFilter field="cliNombre" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
                             
                         </p-columnFilter>
                     </div>
@@ -56,7 +56,7 @@
                 <th style="min-width:10rem">
                     <div class="flex ">
                         Convenio
-                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                        <p-columnFilter field="covNombre" matchMode="in" display="menu"  [showOperator]="false" >
                             
                         </p-columnFilter>
                     </div>
@@ -92,7 +92,15 @@
                 </td>
             </tr>
         </ng-template>
-        
+        <ng-template pTemplate="footer">
+            <tr>
+               <td></td>
+                <td>TOTAL</td>
+                <td>${{total}}</td>
+                <td></td>
+
+            </tr>
+        </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
                 <td colspan="7">No se encontraron clientes</td>

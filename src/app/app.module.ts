@@ -57,6 +57,8 @@ import { PagosComponent } from './pagos/pagos.component';
 import { PendientesComponent } from './pagos/pendientes/pendientes.component';
 import { HistorialComponent } from './pagos/historial/historial.component';
 import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
+import { authInterceptorProviders } from './services/auth.interceptor';
+import { TopbarComponent } from './shared/topbar/topbar/topbar.component';
 
 registerLocaleData( localEs );
 registerLocaleData( localFr );
@@ -64,6 +66,7 @@ registerLocaleData( localFr );
 @NgModule({
     declarations: [
         AppComponent,
+        TopbarComponent,
         ComisionComponent,
         AdministracionComponent,
         CodificacionComponent,
@@ -99,8 +102,8 @@ registerLocaleData( localFr );
     exports: [
         SharedModule
     ],
-    providers: [
-        { provide: LOCALE_ID, useValue: 'es-CO' }
+    providers: [authInterceptorProviders
+       // { provide: LOCALE_ID, useValue: 'es-CO' }
     ],
     bootstrap: [AppComponent],
     imports: [

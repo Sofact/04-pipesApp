@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Codigo } from '../administracion/pages/codificacion/Codigo';
 import { map, Observable, Subject, tap } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CodigosService {
 
 
@@ -17,10 +20,18 @@ export class CodigosService {
           .append('Content-Type', 'Application/json')
           .append('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS');
 
+         
+
+  private params = new HttpParams()
+          .set('codCodigo', '')
+          .set('id', "1");
+
   private _refresh$ = new Subject<void>();
 
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient,
+                private authService: AuthService
+                ) { }
 
   get refresh$(){
     return this._refresh$;
@@ -38,6 +49,7 @@ export class CodigosService {
   }
 
   saveCodigo(codigo: Codigo): Observable<Codigo>{
+
   
     return this.http.post<Codigo>(this.urlSaveEndpoint, codigo, {headers: this.httpHeaders}).pipe(
       
@@ -49,7 +61,9 @@ export class CodigosService {
    }
 
    updateCodigo(codCodigo: string): Observable<Codigo>{
+
   
-    return this.http.put<Codigo>(this.urlUpdateEndpoint+"/"+codCodigo, {headers: this.httpHeaders});
+  
+    return this.http.put<Codigo>(this.urlUpdateEndpoint+"/"+codCodigo,{headers: this.httpHeaders});
   }
 }

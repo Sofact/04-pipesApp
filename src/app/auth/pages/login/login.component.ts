@@ -10,24 +10,54 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class LoginComponent {
 
+
+
   miFormulario: FormGroup = this.fb.group(
       {
-        email: ['asdf@qgsd.com', [Validators.required, Validators.email]],
-        password: ['asdfsdfa', [Validators.required, Validators.minLength(6)]],
+        email: ['test@test', [Validators.required, Validators.email]],
+        password: ['admin123', [Validators.required, Validators.minLength(6)]],
       }
     );
 
   constructor( private fb: FormBuilder,
                private authService: AuthService,
-                private router: Router) { }
+               
+                private router: Router) {
+                
+                  if(this.authService.isLogin()){
+                    console.log("islogin");
+                    this.router.navigate(['/userDashboard']);
+                  }else{
+                    console.log("No login");
+                   // this.router.navigate(['/userDashboard']);
+                  }
+                }
 
   login(){
   
-    console.log(this.miFormulario.value);
-    this.router.navigateByUrl('comision');
 
-    this.authService.login()
-    .subscribe(response =>this.router.navigateByUrl('/userDashboard'));
+
+    this.authService.login(this.miFormulario.value.email, this.miFormulario.value.password)
+    .subscribe(
+      
+      (resp: any) => {
+
+      
+      console.log(resp);
+      if(!resp.error && resp){
+        console.log("Ingreso al submit::::", resp);
+        this.router.navigate(['/dashboard']);
+
+      }else{
+        if(resp.error.error == 'Unauthorized'){
+        
+          console.log("unauthorized")
+        }
+      }
+      
+        })
+
+    
     
   }
 

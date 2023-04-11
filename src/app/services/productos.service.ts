@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
 import { Producto } from '../administracion/pages/productos/productos/Producto';
 import { Subject } from 'rxjs';
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class ProductosService {
 
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
+
 
   private _refresh$ = new Subject<void>();
    
