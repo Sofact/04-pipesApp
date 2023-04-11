@@ -27,21 +27,15 @@ export class ProductosComponent implements OnInit {
   constructor( private productoService: ProductosService,
                private router: Router ) { 
               
-                this.router.routeReuseStrategy.shouldReuseRoute = function(){
                 
-                  return false;
-                }
               }
 
   ngOnInit(): void {
 
-    this.producto.proDescripcion=this.descripcion;
-    this.producto.proReferencia = this.sku;
-    this.producto.proValor = this.valor;
-    
-    this.productoService.getProductos()
+      this.productoService.getProductos()
       .subscribe( product => this.product = product );
   }
+
 
   agregar(){
 

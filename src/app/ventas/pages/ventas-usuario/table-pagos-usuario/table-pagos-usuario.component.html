@@ -1,0 +1,66 @@
+<div class="card">
+  
+    <p-table #dt1 [value]="viewPagos" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['proDescripcion','comFecha','comValor']">
+        <ng-template pTemplate="caption">
+            
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Fecha
+                        <p-columnFilter type="text" field="pagFecha" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Valor pagado
+                        <p-columnFilter type="text" field="pagValor" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Detalle del pago
+ 
+                   
+                    </div>
+                </th>
+                
+               
+               
+                             
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-viewPago>
+            <tr>
+                <td>
+                    {{viewPago.pagFecha | date: 'dd/MM/yyyy'}}
+                </td>
+                <td>
+                    {{viewPago.pagValor}}
+                </td>
+                <td>
+                    {{viewPago.cliBanco}} 
+                    <br>
+                    Cta. {{viewPago.cliTipoCuenta}}    
+                    <br>
+                    #{{viewPago.cliNumCuenta}}                  
+                </td>
+               
+              
+            </tr>
+        </ng-template>
+        
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se encontraron clientes</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+

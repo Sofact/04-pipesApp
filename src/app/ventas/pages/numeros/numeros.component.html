@@ -1,24 +1,18 @@
-
-<div class="text-layout">
-    <h1>Ventas</h1>
-
-</div>
-
 <div class="grid">
-    <div class="col-4">
-        <p-card header="Ventas netas"
-                subheader="anuales">
-                <i class="pi pi-dollar"></i>
-                 {{ventasNetas + 100000}}
-        </p-card>
+    <div class="col-3">
+        <app-menu></app-menu>
     </div>
-    <div class="col-4">
-        <p-card header="Ventas netas"
-                subheader="anuales">
+    <div class="col-9">
+        <div class="card">
+            <h1>Resumen de Ventas</h1>
+            <p-tabView>
+                <p-tabPanel header="Ventas" leftIcon="pi pi-calendar" tooltip="Clientes">
+                    <app-table-clientes></app-table-clientes>
+
+                </p-tabPanel>
                
-            {{porcentaje }}
-        </p-card>
-    </div>
-    
-   
+            </p-tabView>
+            </div>
+
+        </div>
 </div>

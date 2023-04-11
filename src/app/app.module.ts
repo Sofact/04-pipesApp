@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { ComisionConvenioComponent } from './configuracion/comision-convenio/com
 import { ComisionResumenComponent } from './configuracion/comision-resumen/comision-resumen.component';
 import { ComisionValidarComponent } from './configuracion/comision-validar/comision-validar.component';
 import { ComisionPagosComponent } from './configuracion/comision-pagos/comision-pagos.component';
+import { DashboardComponent } from './usuario/dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { AdministracionComponent } from './administracion/administracion.component';
 import { TaxComponent } from './administracion/pages/tax/tax.component';
@@ -43,6 +45,18 @@ import { CodificacionComponent } from './administracion/pages/codificacion/codif
 import { GeneradorComponent } from './administracion/pages/codificacion/generador/generador.component';
 import { ProductosComponent } from './administracion/pages/productos/productos/productos.component';
 import { TableComponent } from './administracion/pages/productos/table/table.component';
+import { TablePendientesComponent } from './usuario/dashboard/table-pendientes/table-pendientes.component';
+import { TablePagadoComponent } from './usuario/dashboard/table-pagado/table-pagado.component';
+import { NumerosComponent } from './ventas/pages/numeros/numeros.component';
+import { TableClientesComponent } from './ventas/pages/numeros/table-clientes/table-clientes.component';
+import { VentasUsuarioComponent } from './ventas/pages/ventas-usuario/ventas-usuario.component';
+import { PerfilComponent } from './ventas/pages/ventas-usuario/perfil/perfil.component';
+import { TableVentasUsuarioComponent } from './ventas/pages/ventas-usuario/table-ventas-usuario/table-ventas-usuario.component';
+import { TablePagosUsuarioComponent } from './ventas/pages/ventas-usuario/table-pagos-usuario/table-pagos-usuario.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { PendientesComponent } from './pagos/pendientes/pendientes.component';
+import { HistorialComponent } from './pagos/historial/historial.component';
+import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
 
 registerLocaleData( localEs );
 registerLocaleData( localFr );
@@ -67,7 +81,20 @@ registerLocaleData( localFr );
         ComisionConvenioComponent,
         ComisionResumenComponent,
         ComisionValidarComponent,
-        ComisionPagosComponent
+        ComisionPagosComponent,
+        DashboardComponent,
+        PerfilComponent,
+        PresentacionComponent,
+        TablePendientesComponent,
+        TablePagadoComponent,
+        NumerosComponent,
+        TableClientesComponent,
+        VentasUsuarioComponent,
+        TableVentasUsuarioComponent,
+        TablePagosUsuarioComponent,
+        PagosComponent,
+        PendientesComponent,
+        HistorialComponent
     ],
     exports: [
         SharedModule
@@ -80,7 +107,7 @@ registerLocaleData( localFr );
         AutoCompleteModule,
         CalendarModule,
         CommonModule,
-        
+        RouterModule.forRoot([]),
         BrowserModule,
         BrowserAnimationsModule,
         AppRouterModule,
@@ -93,5 +120,6 @@ registerLocaleData( localFr );
         SharedModule,
         HttpClientModule
     ]
-})
+}
+)
 export class AppModule { }

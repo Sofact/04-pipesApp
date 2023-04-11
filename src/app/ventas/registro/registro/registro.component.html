@@ -6,7 +6,7 @@
                     autocomplete="off"
                     [formGroup]="miFormulario"
                     (ngSubmit)="login()"
-                    formControlName="name">
+                    >
                         
                 <span class="login100-form-title p-b-49">
                     Registro
@@ -16,7 +16,7 @@
                     <span class="label-input100">Nombre completo</span>
                     <input class="input100"
                         type="text" 
-                        formControlName="nombre" 
+                        formControlName="cliNombre" 
                         placeholder="Ingrese Nombre del cliente">
                     <span class="focus-input100"></span>
                 </div>
@@ -25,15 +25,15 @@
                     <span class="label-input100">Email</span>
                     <input class="input100"
                         type="email" 
-                        formControlName="email" 
+                        formControlName="cliCorreo" 
                         placeholder="Ingrese su email">
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 m-b-23">
-                    <span class="label-input100">Cédula</span>
+                    <span class="label-input100">cedula</span>
                     <input class="input100"
                         type="number" 
-                        formControlName="cedula" 
+                        formControlName="cliCedula" 
                         placeholder="Ingrese la cédula">
                     <span class="focus-input100"></span>
                 </div>
@@ -41,7 +41,7 @@
                     <span class="label-input100">Celular</span>
                     <input class="input100"
                         type="number" 
-                        formControlName="celular" 
+                        formControlName="cliCelular" 
                         placeholder="Ingrese Celular del cliente">
                     <span class="focus-input100"></span>
                 </div>
@@ -50,8 +50,8 @@
                     <span class="label-input100">Fecha de Nacimiento</span>
                     <div>
                     <p-calendar inputId="basic" 
-                                formControlName="date"  
-                                [(ngModel)]="date1"
+                                formControlName="cliFecha"  
+                                
                                 ></p-calendar>
                      </div>
                    
@@ -60,11 +60,11 @@
                 <div class="wrap-input100">
                     <span class="label-input100">Sexo</span>
                     <div>
-                    <p-dropdown [options]="sexo" 
-                               
-                                [(ngModel)]="sexo" 
+                    <p-dropdown [options]="cliSexo" 
+                                formControlName="cliSexo" 
+                                
                                 placeholder="Seleccione sexo" 
-                               
+                                 
                                 [showClear]="true"></p-dropdown>
 
                     </div>
@@ -78,7 +78,9 @@
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn"
                                 type="submit"
-                                [disabled]="miFormulario.invalid">
+                                [disabled]="miFormulario.invalid"
+                                >
+                               
                             Registrar
                         </button>
                     </div>

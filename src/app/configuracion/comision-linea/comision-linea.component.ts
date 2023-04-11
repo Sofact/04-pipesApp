@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Convenio } from '../comision-resumen/convenio';
+import { Convenio } from 'src/app/shared/models/convenio';
 import { Tipos } from '../comision/tipos';
 
 @Component({

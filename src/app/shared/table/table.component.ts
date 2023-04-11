@@ -20,12 +20,11 @@ export class TableComponent implements OnInit {
 
   statuses!: any[];
 
-  loading: boolean = true;
+  loading: boolean = false;
 
   activityValues: number[] = [0, 100];
 
-  constructor(private codigosServices: CodigosService,
-                private customerService: CustomerService ) { }
+  constructor(private codigosServices: CodigosService ) { }
 
   ngOnInit() {
       this.codigosServices.getCodigos()
@@ -35,13 +34,7 @@ export class TableComponent implements OnInit {
 
       
       }) 
-      this.customerService.getCustomersLarge().then((customers) => {
-        this.customers = customers;
-        this.loading = false;
-
-       
-    });
-
+     
 
      
   }

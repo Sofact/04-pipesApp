@@ -7,6 +7,7 @@ import { ComisionProductoComponent } from '../configuracion/comision-producto/co
 import { ComisionComponent } from '../configuracion/comision/comision.component';
 import { GruposComponent } from '../configuracion/grupos/grupos.component';
 import { ObjetivosComponent } from '../configuracion/objetivos/objetivos.component';
+import { DashboardComponent } from '../usuario/dashboard/dashboard.component';
 import { BasicosComponent } from './pages/basicos/basicos.component';
 import { NoComunesComponent } from './pages/no-comunes/no-comunes.component';
 import { NumerosComponent } from './pages/numeros/numeros.component';
@@ -52,7 +53,10 @@ const routes: Routes = [
     path: 'comisionLinea',
     component: ComisionLineaComponent
   },
-  
+  {
+    path: 'userDashboard',
+    component: DashboardComponent
+  },
 
   {
     path: 'objetivos',

@@ -19,9 +19,17 @@ import { AdministracionComponent } from './administracion/administracion.compone
 import { TaxComponent } from './administracion/pages/tax/tax.component';
 import { CodificacionComponent } from './administracion/pages/codificacion/codificacion.component';
 import { RegistroComponent } from './ventas/registro/registro/registro.component';
+import { DashboardComponent } from './usuario/dashboard/dashboard.component';
+import { VentasUsuarioComponent } from './ventas/pages/ventas-usuario/ventas-usuario.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
 
 const routes: Routes = [
 
+  {
+  path:'',
+  redirectTo:'auth', pathMatch: 'full'
+  },
   {
     path:'auth',
     //component: LoginComponent
@@ -86,7 +94,14 @@ const routes: Routes = [
   },
   {
     path: 'parametros',
-    component: AdministracionComponent
+    component: AdministracionComponent,
+    data: {
+      reuseComponent: true
+    }
+  },
+  {
+    path: 'presentacion',
+    component: PresentacionComponent
   },
   {
     path: 'codificacion',
@@ -100,6 +115,19 @@ const routes: Routes = [
     path: 'registro',
     component: RegistroComponent
   },
+  {
+    path: 'userDashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'ventasUsuario/:id/:nombre',
+    component: VentasUsuarioComponent
+  },
+  {
+    path: 'pagos',
+    component: PagosComponent
+  },
+
   {
     path: '**',
     redirectTo: ''

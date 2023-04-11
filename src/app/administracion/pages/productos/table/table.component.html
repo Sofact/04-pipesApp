@@ -46,6 +46,10 @@
                 <td>
                     {{producto.proValor}}               
                 </td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-outlined p-button-rounded p-button-primary"
+                            (click)="delete(producto.proId)"></button>
+                </td>
                 
             </tr>
         </ng-template>

@@ -3,7 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { NumerosComponent } from './pages/numeros/numeros.component';
+
+
+
 import { NoComunesComponent } from './pages/no-comunes/no-comunes.component';
 import { BasicosComponent } from './pages/basicos/basicos.component';
 import { CalendarModule } from 'primeng/calendar';
@@ -21,9 +23,12 @@ import { SharedModule } from "../shared/shared.module";
 import { RegistroComponent } from './registro/registro/registro.component';
 
 
+
+
+
 @NgModule({
     declarations: [
-        NumerosComponent,
+
         NoComunesComponent,
         BasicosComponent,
         OrdenarComponent,
@@ -34,9 +39,11 @@ import { RegistroComponent } from './registro/registro/registro.component';
         VentasComponent,
         PerfilComponent,
         RegistroComponent
+        
+        
     ],
     exports: [
-        NumerosComponent,
+
         NoComunesComponent,
         BasicosComponent,
         OrdenarComponent,

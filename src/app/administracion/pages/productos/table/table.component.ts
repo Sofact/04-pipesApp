@@ -5,6 +5,9 @@ import { CustomerService } from 'src/app/shared/customer.service';
 import { Codigo } from '../../codificacion/Codigo';
 import { Producto } from '../productos/Producto';
 import { ProductosService } from '../../../../services/productos.service';
+import { Router } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tableProducto',
@@ -28,12 +31,34 @@ export class TableComponent implements OnInit {
   loading: boolean = true;
 
   activityValues: number[] = [0, 100];
+  borrado:  number = 0;
 
-  constructor(private codigosServices: CodigosService,
+  suscription!: Subscription;
+
+  constructor( private router: Router,
                 private customerService: CustomerService,
-                private productosService: ProductosService ) { }
+                private productosService: ProductosService ) { 
+                
+                  
+                }
 
   ngOnInit() {
+
+    this.suscription = this.productosService.refresh$
+      .subscribe( () => {
+      
+        this.productosService.getProductos() 
+          .subscribe ((respuesta) => {
+      
+          this.productos = respuesta;
+  
+        
+        }) 
+      })
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+                
+      return false;
+    }
       this.productosService.getProductos()
       .subscribe ((respuesta) => {
       
@@ -50,6 +75,17 @@ export class TableComponent implements OnInit {
 
 
      
+  }
+
+  delete (id: number){
+  
+    this.productosService.DeleteProductos(id)
+    .subscribe((respuesta) => {
+      
+      this.router.navigate(['/parametros'])
+    });
+
+   
   }
 
   clear( ) {

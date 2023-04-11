@@ -1,0 +1,76 @@
+<div class="card">
+  
+    <p-table #dt1 [value]="viewComisiones" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['proDescripcion','comFecha','comValor']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+               <h3>Comisiones pendientes de pago</h3>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Producto
+                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Fecha
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Valor Comision
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Estado
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                             
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-viewComision>
+            <tr>
+                <td>
+                    {{viewComision.proDescripcion}}
+                </td>
+                <td>
+                    {{viewComision.comFecha}}
+                </td>
+                <td>
+                    {{viewComision.comValor}}               
+                </td>
+                <td>
+                    {{viewComision.comEstado}}               
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <tr>
+                <td></td>
+                <td>TOTAL</td>
+                <td>{{total}}</td>
+                <td></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se encontraron productos</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

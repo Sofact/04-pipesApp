@@ -44,18 +44,18 @@ export class MenuComponent implements OnInit {
             {
               label: 'Afiliados',
               icon: 'pi pi-users',
-              routerLink: '../basicos'
+              routerLink: '/basicos'
             },
             {
               label: 'Ventas',
               icon: 'pi pi-shopping-bag',
-              routerLink: 'numeros'
+              routerLink: '/numeros'
             },
             
             {
               label: 'Pagos',
               icon: 'pi pi-dollar',
-              routerLink: 'no-comunes'
+              routerLink: '/pagos'
             }
           ]
       },
@@ -77,7 +77,7 @@ export class MenuComponent implements OnInit {
           {
             label: 'Parametros',
             icon: 'pi pi-cog',
-            routerLink: '../parametros'
+            routerLink: '/parametros'
           }
         ]
     }

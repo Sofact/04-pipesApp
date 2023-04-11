@@ -1,0 +1,73 @@
+<div class="card">
+  
+    <p-table #dt1 [value]="ViewPagosGrouped" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['proDescripcion','proReferencia','proValor']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+               <h3>Comisiones pendientes de pago</h3>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Usuario
+                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Valor
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Información Bancaria
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+               
+                             
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ViewPagosGroup>
+            <tr>
+                <td>
+                    <a [routerLink]="['../ventasUsuario', ViewPagosGroup.usuId, ViewPagosGroup.usuNombre]" >
+                        {{ViewPagosGroup.usuNombre}}    
+                        </a> 
+                    <br>
+                    {{ViewPagosGroup.usuCorreo}}
+                </td>
+                <td>
+                    ${{ViewPagosGroup.sumValor}}
+                </td>
+                <td>
+                    {{ViewPagosGroup.cliBanco}}
+                    <br>
+                    #{{ViewPagosGroup.cliNumCuenta}}
+                </td>
+               
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <tr>
+               
+                <td>TOTAL</td>
+                <td>${{total}}</td>
+                <td></td>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se encontraron productos</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/shared/models/Cliente';
+import { ClientesService } from '../../../services/clientes.service';
+import { CodigosService } from '../../../services/codigos.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -8,52 +12,67 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent {
 
-  date1!: Date;
-  rangeDates!: Date[];
-  minDate!: Date;
-  maxDate!: Date;
-  invalidDates!: Array<Date>
-  sexo: String[]=['Hombre', 'Mujer'];
+  cliente: Cliente = {cliId : 0,
+                      cliNombre : '',
+                      cliIdentificacion: '',
+                      cliCorreo : '',
+                      cliCedula : '',
+                      cliCelular:'',
+                      cliFecha : '',
+                      cliSexo: '' };
+
+   code: string='';
+   codCodigo: string='';
+
+  cliSexo: string[]=['Hombre', 'Mujer'];
+
 
   miFormulario: FormGroup = this.fb.group(
     {
-      email: ['info@gmail.com', [Validators.required, Validators.email]],
-      nombre: [' ', [Validators.required]],
-      cedula: [' ', [ Validators.minLength(6)]],
-      celular: [' ',[ Validators.minLength(10)]],
-      date: [' ',[ Validators.required]]
+      cliCorreo: ['info@gmail.com', [Validators.required, Validators.email]],
+      cliNombre: [' ', [Validators.required]],
+      cliCedula: [' ', [ Validators.minLength(6)]],
+      cliCelular: [' ',[ Validators.minLength(10)]],
+      cliFecha: [' ',[ Validators.required]],
+      cliSexo: ['', [ Validators.required]]
       
     }
   );
 
-constructor( private fb: FormBuilder,
+constructor(  private clienteService :ClientesService,
+              private activatedRoute: ActivatedRoute,
+              private codigoService: CodigosService,
+              private fb: FormBuilder,
               private router: Router) { }
 
               ngOnInit() {
-                let today = new Date();
-                let month = today.getMonth();
-                let year = today.getFullYear();
-                let prevMonth = (month === 0) ? 11 : month -1;
-                let prevYear = (prevMonth === 11) ? year - 1 : year;
-                let nextMonth = (month === 11) ? 0 : month + 1;
-                let nextYear = (nextMonth === 0) ? year + 1 : year;
-                this.minDate = new Date();
-                this.minDate.setMonth(prevMonth);
-                this.minDate.setFullYear(prevYear);
-                this.maxDate = new Date();
-                this.maxDate.setMonth(nextMonth);
-                this.maxDate.setFullYear(nextYear);
-        
-                let invalidDate = new Date();
-                invalidDate.setDate(today.getDate() - 1);
-                this.invalidDates = [today,invalidDate];
+               
+                this.activatedRoute.queryParams.subscribe( (params) => {
+                
+                  this.code = params['code'];
+                  this.codCodigo =  (this.code.substring(3));
+                })
             }
-login(){
+  login(){
 
-  console.log(this.miFormulario.value);
-  this.router.navigateByUrl('comision');
+    this.cliente  = Object.assign(this.cliente, this.miFormulario.value);
+    console.log(this.miFormulario.value);
+    console.log('el nombre',this.cliente.cliNombre);
+    
+    
+    this.codigoService.updateCodigo(this.codCodigo)
+    .subscribe(response =>this.router.navigateByUrl('/userDashboard'));
   
-}
+
+
+    this.clienteService.saveCliente(this.cliente)
+    .subscribe(response =>this.router.navigateByUrl('/userDashboard'));
+
+    
+    
+
+
+  }
 
 
 }

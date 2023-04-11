@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Convenio } from './convenio';
+import { Convenio } from 'src/app/shared/models/convenio';
+
 
 @Component({
   selector: 'app-comision-resumen',

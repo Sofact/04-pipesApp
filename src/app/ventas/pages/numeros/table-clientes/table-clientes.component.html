@@ -1,0 +1,103 @@
+<div class="card">
+  
+    <p-table #dt1 [value]="viewVentas" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['proDescripcion','comFecha','comValor']">
+        <ng-template pTemplate="caption">
+            
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Fecha
+                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Orden
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Valor
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Partner
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Cliente
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Ciudad
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex ">
+                        Convenio
+                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            
+                        </p-columnFilter>
+                    </div>
+                </th>
+                             
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-viewVenta>
+            <tr>
+                <td>
+                    {{viewVenta.comFecha | date: 'dd/MM/yyyy'}}
+                </td>
+                <td>
+                    {{viewVenta.comId}}
+                </td>
+                <td>
+                    {{viewVenta.comValor}}               
+                </td>
+                <td>
+                    <a [routerLink]="['../ventasUsuario', viewVenta.usuId, viewVenta.usuNombre]" >
+                    {{viewVenta.usuNombre}}       
+                    </a>        
+                </td>
+                <td>
+                    {{viewVenta.cliNombre}}               
+                </td>
+                <td>
+                    {{viewVenta.munDescripcion}}               
+                </td>
+                <td>
+                    {{viewVenta.covNombre}}               
+                </td>
+            </tr>
+        </ng-template>
+        
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se encontraron clientes</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+

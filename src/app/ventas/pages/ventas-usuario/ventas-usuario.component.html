@@ -1,0 +1,24 @@
+<div class="grid">
+    <div class="col-3">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-9">
+        <div class="card">
+            <h1>{{usuario}}</h1>
+            <p-tabView>
+                <p-tabPanel header="Perfil" leftIcon="pi pi-calendar" tooltip="Clientes">
+                   <app-perfil_ventas></app-perfil_ventas>
+                </p-tabPanel>
+                <p-tabPanel header="Ventas" leftIcon="pi pi-calendar" tooltip="Clientes">
+                    <app-table-ventas-usuario></app-table-ventas-usuario>
+
+                </p-tabPanel>
+                <p-tabPanel header="Pagos" leftIcon="pi pi-calendar" tooltip="Clientes">
+                    <app-table-pagos-usuario></app-table-pagos-usuario>
+
+                </p-tabPanel>
+            </p-tabView>
+            </div>
+
+        </div>
+</div>
