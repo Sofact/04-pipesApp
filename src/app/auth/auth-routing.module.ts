@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       
       { path: 'login', component: LoginComponent },
-      { path: 'loginCliente', component: LoginClientesComponent },
+      { path: 'loginCliente/:code', component: LoginClientesComponent },
       { path: 'registro', component: RegisterComponent },
       { path: '**', redirectTo: 'login' },
     ]

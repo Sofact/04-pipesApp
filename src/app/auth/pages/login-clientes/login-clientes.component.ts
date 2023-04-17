@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginClientesComponent  {
 
 
-
+  code:string | null='';
 
   miFormulario: FormGroup = this.fb.group(
     {
@@ -21,7 +21,7 @@ export class LoginClientesComponent  {
 
 constructor( private fb: FormBuilder,
              private authService: AuthService,
-             
+             private route: ActivatedRoute,
               private router: Router) {
               
                 if(this.authService.isLogin()){
@@ -30,9 +30,12 @@ constructor( private fb: FormBuilder,
                 }else{
                   console.log("No login");
                  // this.router.navigate(['/userDashboard']);
-                }
-              }
 
+                 
+                }
+                this.code =this.route.snapshot.paramMap.get('code');
+              }
+              
 login(){
 
 
@@ -46,7 +49,7 @@ login(){
     console.log(resp);
     if(!resp.error && resp){
       console.log("Ingreso al submit::::", resp);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/registro?code=2341']);
 
     }else{
       if(resp.error.error == 'Unauthorized'){

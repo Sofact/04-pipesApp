@@ -4,17 +4,20 @@ import { map, Observable, tap } from 'rxjs';
 import { Producto } from '../administracion/pages/productos/productos/Producto';
 import { Subject } from 'rxjs';
 import { AuthService } from './auth.service';
+import { URL_SERVICIOS } from '../config/config';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
 
-  private urlEndPoint: string = 'http://localhost:8090/productos/all';
-  private urlSaveEndPoint: string = 'http://localhost:8090/productos/save';
-  private urlEndpointDelete: string = 'http://localhost:8090/productos/op';
+  private urlEndPoint: string = URL_SERVICIOS+'productos/all';
+  private urlSaveEndPoint: string = URL_SERVICIOS+'productos/save';
+  private urlEndpointDelete: string = URL_SERVICIOS+'productos/op';
 
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
+          .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
+
 
 
   private _refresh$ = new Subject<void>();

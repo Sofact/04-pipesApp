@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ViewPagos } from '../shared/models/ViewPagos';
 import { map, Observable, Subject } from 'rxjs';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewPagosService {
 
-  private urlEndpoint: string = 'http://localhost:8090/pagos/all';
-  private urlEndpointTotal: string = 'http://localhost:8090/pagos/total';
-
+  private urlEndpoint: string = URL_SERVICIOS+'pagos/all';
+  private urlEndpointTotal: string = URL_SERVICIOS+'pagos/total';
+  private httpHeaders = new HttpHeaders()
+          .append('Content-Type', 'Application/json')
+          .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
   
 
   constructor(private http: HttpClient) { }
@@ -19,7 +22,7 @@ export class ViewPagosService {
 
   getViewPagosById(id: number): Observable<ViewPagos[]>{
 
-    return this.http.get<ViewPagos[]>(this.urlEndpoint+"/"+id).pipe(
+    return this.http.get<ViewPagos[]>(this.urlEndpoint+"/"+id, {headers: this.httpHeaders}).pipe(
       
         map( response => response as ViewPagos[])
       )
@@ -27,7 +30,7 @@ export class ViewPagosService {
 
   getViewPagos(): Observable<ViewPagos[]>{
 
-    return this.http.get<ViewPagos[]>(this.urlEndpoint).pipe(
+    return this.http.get<ViewPagos[]>(this.urlEndpoint, {headers: this.httpHeaders}).pipe(
 
       map(result => result as ViewPagos[])
       )
@@ -35,7 +38,7 @@ export class ViewPagosService {
 
   getViewPagosTotal(): Observable<number>{
   
-    return this.http.get<number>(this.urlEndpointTotal).pipe(
+    return this.http.get<number>(this.urlEndpointTotal, {headers: this.httpHeaders}).pipe(
       
         map(result => result as number)
       )

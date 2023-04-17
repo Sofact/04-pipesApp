@@ -2,19 +2,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, tap } from 'rxjs';
+import { URL_SERVICIOS } from 'src/app/config/config';
+
 const TOKEN_KEY = 'AuthToken';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private urlEndpoint: string = 'http://localhost:8090/api/auth/signin';
+  private urlEndpoint: string = URL_SERVICIOS+'api/auth/signin';
   username: string= '';
   password: string= '';
 
   private httpHeaders = new HttpHeaders()
   .append('Content-Type', 'Application/json')
-  .append('Access-Control-Allow-Origin', 'localhost:4200')
+  .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
   .append('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS');
 
   

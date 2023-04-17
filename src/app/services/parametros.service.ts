@@ -2,15 +2,16 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Tax } from '../administracion/pages/tax/tax';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParametrosService {
 
-  private urlEndpoint: string = 'http://localhost:8090/parametros/taxes';
-  private urlSaveEndPoint: string = 'http://localhost:8090/parametros/saveParams';
-  private urlDeleteEndPoint: string = 'http://localhost:8090/parametros/deleteParams';
+  private urlEndpoint: string = URL_SERVICIOS+'parametros/taxes';
+  private urlSaveEndPoint: string = URL_SERVICIOS+'parametros/saveParams';
+  private urlDeleteEndPoint: string = URL_SERVICIOS+'parametros/deleteParams';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
 

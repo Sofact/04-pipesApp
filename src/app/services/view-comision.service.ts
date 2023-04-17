@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ViewComision } from '../shared/models/ViewComision';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewComisionService {
 
-  private urlEndpoint: string = 'http://localhost:8090/viewComision/all';
-  private urlEndpointEstados: string = 'http://localhost:8090/viewComision/estado';
-  private urlEndpointEstadosTotal: string = 'http://localhost:8090/viewComision/totalEstado';
+  private urlEndpoint: string = URL_SERVICIOS+'viewComision/all';
+  private urlEndpointEstados: string = URL_SERVICIOS+'viewComision/estado';
+  private urlEndpointEstadosTotal: string = URL_SERVICIOS+'viewComision/totalEstado';
 
   constructor( private http: HttpClient) { }
 

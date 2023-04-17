@@ -3,14 +3,15 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Cliente } from '../shared/models/Cliente';
 import { AuthService } from './auth.service';
+import { URL_SERVICIOS } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
-  private urlEndpoint: string = 'http://localhost:8090/cliente/all';
-  private urlSaveEndpoint: string = 'http://localhost:8090/cliente/save';
+  private urlEndpoint: string = URL_SERVICIOS+'cliente/all';
+  private urlSaveEndpoint: string = URL_SERVICIOS+'cliente/save';
   private httpHeaders = new HttpHeaders()
             .append('Content-Type', 'Application/json')
             .append('Authorization', `Bearer $this.authService.token}`)

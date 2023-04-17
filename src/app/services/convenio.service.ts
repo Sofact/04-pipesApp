@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Convenio } from '../shared/models/convenio';
 import { ViewPerfil } from '../shared/models/ViewPerfil';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConvenioService {
 
-  urlEndPoint: string = 'http://localhost:8090/perfil/all';
+  urlEndPoint: string = URL_SERVICIOS+'perfil/all';
 
   constructor(private http: HttpClient) { }
 

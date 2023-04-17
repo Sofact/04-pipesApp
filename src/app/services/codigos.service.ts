@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Codigo } from '../administracion/pages/codificacion/Codigo';
 import { map, Observable, Subject, tap } from 'rxjs';
 import { AuthService } from './auth.service';
+import { URL_SERVICIOS } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ import { AuthService } from './auth.service';
 export class CodigosService {
 
 
-  private urlEndpoint: string = 'http://localhost:8090/codigos/all';
-  private urlSaveEndpoint: string = 'http://localhost:8090/codigos/save';
-  private urlUpdateEndpoint: string ='http://localhost:8090/codigos/update';
+  private urlEndpoint: string = URL_SERVICIOS+'codigos/all';
+  private urlSaveEndpoint: string = URL_SERVICIOS+'codigos/save';
+  private urlUpdateEndpoint: string = URL_SERVICIOS+'codigos/update';
 
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')

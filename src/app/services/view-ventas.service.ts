@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ViewVentas } from '../shared/models/ViewVentas';
 import { map, Observable } from 'rxjs';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewVentasService {
 
-  private urlEndpoint: string = 'http://localhost:8090/viewVentas/all';
-  private urlEndpointTotal: string = 'http://localhost:8090/viewVentas/total';
+  private urlEndpoint: string = URL_SERVICIOS+'viewVentas/all';
+  private urlEndpointTotal: string = URL_SERVICIOS+'viewVentas/total';
 
   constructor( private http: HttpClient) { }
 

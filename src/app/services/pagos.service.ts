@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Pagos } from '../shared/models/Pagos';
 import { AuthService } from './auth.service';
+import { URL_SERVICIOS } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PagosService {
               ) { }
 
                 
-  private urlEndpoint: string = 'http://localhost:8090/pagos/user';
+  private urlEndpoint: string = URL_SERVICIOS+'pagos/user';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
           
