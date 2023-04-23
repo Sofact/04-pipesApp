@@ -17,9 +17,11 @@ export class TablePendientesComponent implements OnInit {
 
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
+  comisionesFiltradas: ViewComision[]=[];
   producto!: Producto;
   productos: Producto[]=[];
   total: number =0;
+  usuId: number=0;
 
   codigo: Codigo | undefined;
   codigos: Codigo[]=[];
@@ -42,13 +44,16 @@ export class TablePendientesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.usuId = Number(JSON.parse(localStorage.getItem("id") ?? ''));
+
       this.viewComisionService.getViewComisionEstado('pendiente')
       .subscribe ((respuesta) => {
       
-        this.viewComisiones = respuesta;
+        this.viewComisiones = respuesta.reverse();
+        this.comisionesFiltradas = this.viewComisiones.filter(comision=> comision.usuId == this.usuId);
       }) 
 
-      this.viewComisionService.getViewComisionEstadoTotal('pendiente')
+      this.viewComisionService.getViewComisionEstadoTotal('pendiente', this.usuId)
       .subscribe ((respuesta) => {
       
         this.total = respuesta;

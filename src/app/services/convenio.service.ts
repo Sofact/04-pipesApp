@@ -11,6 +11,8 @@ import { URL_SERVICIOS } from '../config/config';
 export class ConvenioService {
 
   urlEndPoint: string = URL_SERVICIOS+'perfil/all';
+  urlEndPointConvenio: string = URL_SERVICIOS+'convenio/all';
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +21,14 @@ export class ConvenioService {
     return this.http.get<ViewPerfil>(this.urlEndPoint+"/"+id).pipe(
       
         map(results => results as ViewPerfil)
+      )
+  }
+
+  getConvenios(): Observable <Convenio[]>{
+  
+    return this.http.get<Convenio[]>(this.urlEndPointConvenio).pipe(
+      
+        map(results => results as Convenio[])
       )
   }
 }

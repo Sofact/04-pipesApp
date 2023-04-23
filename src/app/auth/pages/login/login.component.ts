@@ -26,7 +26,7 @@ export class LoginComponent {
                 
                   if(this.authService.isLogin()){
                     console.log("islogin");
-                    this.router.navigate(['/userDashboard']);
+                    this.router.navigate(['./basicos']);
                   }else{
                     console.log("No login");
                    // this.router.navigate(['/userDashboard']);
@@ -36,7 +36,7 @@ export class LoginComponent {
   login(){
   
 
-
+    
     this.authService.login(this.miFormulario.value.email, this.miFormulario.value.password)
     .subscribe(
       

@@ -30,13 +30,11 @@ export class TableComponent implements OnInit {
       this.codigosServices.getCodigos()
       .subscribe ((respuesta) => {
       
-        this.codigos = respuesta;
+        this.codigos = respuesta.reverse();
 
       
       }) 
-     
-
-     
+        
   }
 
   clear( ) {

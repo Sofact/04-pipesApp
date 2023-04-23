@@ -23,44 +23,67 @@ constructor( private fb: FormBuilder,
              private authService: AuthService,
              private route: ActivatedRoute,
               private router: Router) {
-              
+
+                this.code =this.route.snapshot.paramMap.get('code');
+/*
+              console.log("Estamos bien");
                 if(this.authService.isLogin()){
                   console.log("islogin");
-                  this.router.navigate(['/userDashboard']);
+                  this.router.navigate(['/registro/'+this.code]);
                 }else{
                   console.log("No login");
-                 // this.router.navigate(['/userDashboard']);
+                  this.router.navigate(['loginCliente/'+this.code]);
 
                  
                 }
-                this.code =this.route.snapshot.paramMap.get('code');
+                */
               }
               
 login(){
 
+  if(this.code){
 
+      this.authService.login(this.miFormulario.value.email, this.miFormulario.value.password)
+      .subscribe(
+        
+        (resp: any) => {
 
-  this.authService.login(this.miFormulario.value.email, this.miFormulario.value.password)
-  .subscribe(
-    
-    (resp: any) => {
+        
+        console.log(resp);
+        if(!resp.error && resp){
+          console.log("Ingreso al submit::::", resp);
+          this.router.navigate(['/registro/'+this.code]);
 
-    
-    console.log(resp);
-    if(!resp.error && resp){
-      console.log("Ingreso al submit::::", resp);
-      this.router.navigate(['/registro?code=2341']);
+        }else{
+          if(resp.error.error == 'Unauthorized'){
+          
+            console.log("unauthorized")
+          }
+        }
+        
+          })
 
-    }else{
-      if(resp.error.error == 'Unauthorized'){
-      
-        console.log("unauthorized")
-      }
-    }
-    
-      })
+  }else{
+        this.authService.login(this.miFormulario.value.email, this.miFormulario.value.password)
+        .subscribe(
+          
+          (resp: any) => {
 
-  
+          
+          console.log(resp);
+          if(!resp.error && resp){
+            console.log("Ingreso al submit::::", resp);
+            this.router.navigate(['/userDashboard']);
+
+          }else{
+            if(resp.error.error == 'Unauthorized'){
+            
+              console.log("unauthorized")
+            }
+          }
+          
+        })
+  }
   
 }
 

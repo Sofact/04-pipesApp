@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
+import { AppMainComponent } from './app.main/app.main.component';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { AppRouterModule } from './app-router.module';
 import { VentasModule } from './ventas/ventas.module';
@@ -66,6 +67,7 @@ registerLocaleData( localFr );
 @NgModule({
     declarations: [
         AppComponent,
+        AppMainComponent,
         TopbarComponent,
         ComisionComponent,
         AdministracionComponent,

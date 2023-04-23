@@ -14,6 +14,7 @@ export class TablePagadoComponent implements OnInit {
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
 
+  usuId: number=0;
   
 
 
@@ -34,13 +35,15 @@ export class TablePagadoComponent implements OnInit {
 
   ngOnInit() {
 
+    this.usuId = Number(JSON.parse(localStorage.getItem("id") ?? ''));
+
       this.viewComisionService.getViewComisionEstado('pagado')
       .subscribe ((respuesta) => {
       
         this.viewComisiones = respuesta;
       }) 
 
-      this.viewComisionService.getViewComisionEstadoTotal('pagado')
+      this.viewComisionService.getViewComisionEstadoTotal('pagado', this.usuId)
       .subscribe ((respuesta) => {
       
         this.total = respuesta;

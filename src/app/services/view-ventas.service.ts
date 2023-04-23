@@ -37,5 +37,13 @@ export class ViewVentasService {
         map(response => response as  number)
       )
   }
+
+  getViewVentasTotal(): Observable<number>{
+
+    return this.http.get<number>(this.urlEndpointTotal).pipe(
+
+      map(response => response as  number)
+    )
+  }
 }
 

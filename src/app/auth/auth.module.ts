@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
 import { RegisterDataComponent } from './pages/register-data/register-data.component';
 import { LoginClientesComponent } from './pages/login-clientes/login-clientes.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -23,7 +24,8 @@ import { LoginClientesComponent } from './pages/login-clientes/login-clientes.co
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    DropdownModule
   ],
   exports:[
     ReactiveFormsModule,

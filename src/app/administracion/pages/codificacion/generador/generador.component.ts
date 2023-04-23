@@ -22,13 +22,14 @@ export class GeneradorComponent implements OnInit {
   codigo: Codigo= { codId: 0,
                     codCodigo: '',
                     codEstado: '',
-                    codFecha: new Date('2017-05-03'),
+                    codFecha: new Date(),
                     codUrl: '',
                     proId: 0,
                     usuId: 10};
 
   selectedProducto!: Producto;
   val!: number;
+  userId: number=0;
 
 
   constructor( private codigoService: CodigosService,
@@ -39,6 +40,9 @@ export class GeneradorComponent implements OnInit {
 
   }
   ngOnInit(): void {
+
+    this.userId = JSON.parse(localStorage.getItem("id") ?? '');
+
     this.productosService.getProductos()
       .subscribe ((respuesta) => {
       
@@ -55,6 +59,7 @@ export class GeneradorComponent implements OnInit {
     this.codigo.proId = this.selectedProducto.proId;
     this.codigo.codEstado = 'activo';
     this.codigo.codId = this.val;
+    this.codigo.usuId= this.userId;
 
     console.log("el valor del::.", this.codigo.proId);
     

@@ -1,6 +1,6 @@
 <div class="card">
   
-    <p-table #dt1 [value]="viewComisiones" dataKey="id"
+    <p-table #dt1 [value]="comisionesFiltradas" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['proDescripcion','comFecha','comValor']">

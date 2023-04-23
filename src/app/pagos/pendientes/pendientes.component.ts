@@ -17,6 +17,7 @@ export class PendientesComponent implements OnInit {
 
   ViewPagosGrouped: ViewPagosGrouped[]=[];
 
+  usuId: number=0;
 
   total = 0;
 
@@ -46,13 +47,16 @@ export class PendientesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.usuId = Number(JSON.parse(localStorage.getItem("id") ?? ''));
+
+
       this.viewComisionService.getViewComisionEstado('pendiente')
       .subscribe ((respuesta) => {
       
         this.viewComisiones = respuesta;
       }) 
 
-      this.viewComisionService.getViewComisionEstadoTotal('pendiente')
+      this.viewComisionService.getViewComisionEstadoTotal('pendiente', this.usuId)
       .subscribe ((respuesta) => {
       
         this.total = respuesta;

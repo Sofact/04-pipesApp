@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { URL_SERVICIOS } from 'src/app/config/config';
+import { User } from '../shared/models/User';
 
 const TOKEN_KEY = 'AuthToken';
 @Injectable({
@@ -11,6 +12,7 @@ const TOKEN_KEY = 'AuthToken';
 export class AuthService {
 
   private urlEndpoint: string = URL_SERVICIOS+'api/auth/signin';
+  private urlEndpointUp: string = URL_SERVICIOS+'api/auth/signup';
   username: string= '';
   password: string= '';
 
@@ -90,6 +92,26 @@ console.log("los valores a enviar", username, password);
       queryParams: {}
     });
   }
+
+  
+  saveUser(user: User): Observable<User>{
+  
+    let username= user.username;
+    let email = user.email;
+    let password= user.password;
+    let convId = user.convId;
+    let munId= user.munId;
+    let cliBanco = user.cliBanco;
+    let cliTipoCuenta = user.cliTipoCuenta;
+    let cliNumCuenta = user.cliNumCuenta;
+
+    console.log("le convId::", convId);
+
+    return this.http.post<User>(this.urlEndpointUp, {username, password, email, convId, munId, cliBanco, cliTipoCuenta, cliNumCuenta}).pipe(
+      
+        map( response => response as User)
+      )
+   }
   
   storeLocalStorageToken(auth: any){
 

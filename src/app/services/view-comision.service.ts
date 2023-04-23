@@ -12,6 +12,7 @@ export class ViewComisionService {
   private urlEndpoint: string = URL_SERVICIOS+'viewComision/all';
   private urlEndpointEstados: string = URL_SERVICIOS+'viewComision/estado';
   private urlEndpointEstadosTotal: string = URL_SERVICIOS+'viewComision/totalEstado';
+  private urlEndpointLastCom: string = URL_SERVICIOS+'viewComision/lastComision';
 
   constructor( private http: HttpClient) { }
 
@@ -30,10 +31,18 @@ export class ViewComisionService {
 
       );
   }
-  getViewComisionEstadoTotal(estado: string): Observable<number>{
-    return this.http.get<number>(this.urlEndpointEstadosTotal+"/"+estado).pipe(
+  getViewComisionEstadoTotal(estado: string, usuId: number): Observable<number>{
+    return this.http.get<number>(this.urlEndpointEstadosTotal+"/"+estado+"/"+usuId).pipe(
 
       map(response => response as number)
+
+      );
+  }
+
+  getLastComision(usuId: string): Observable<ViewComision>{
+    return this.http.get<ViewComision>(this.urlEndpointLastCom+"/"+usuId).pipe(
+
+      map(response => response as ViewComision)
 
       );
   }

@@ -1,5 +1,5 @@
 
-<p-card header={{viewPerfil.usuNombre}} subheader={{viewPerfil.covNombre}} [style]="{width: '360px'}" styleClass="p-card-shadow">
+<p-card header={{viewPerfil.usuCorreo}} subheader={{viewPerfil.covNombre}} [style]="{width: '360px'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
        
     </ng-template>
@@ -7,7 +7,7 @@
     <h4>INFORMACIÓN PERSONAL</h4>
     <hr>
     <h5>E-mail</h5>
-        <input type="text" pInputText [(ngModel)]="viewPerfil.usuCorreo"> 
+        <input type="text" pInputText [(ngModel)]="viewPerfil.usuNombre"> 
        
     <h5>Celular</h5>
         <input type="text" pInputText [(ngModel)]="celular"> 

@@ -23,26 +23,60 @@ import { DashboardComponent } from './usuario/dashboard/dashboard.component';
 import { VentasUsuarioComponent } from './ventas/pages/ventas-usuario/ventas-usuario.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
+import { AppMainComponent } from './app.main/app.main.component';
 
 const routes: Routes = [
 
-  {
-  path:'',
-  redirectTo:'auth', pathMatch: 'full'
-  },
+
   {
     path:'auth',
     //component: LoginComponent
     loadChildren: () => import ('./auth/auth.module').then ( m => m.AuthModule)
   },
-  {
+ 
+  { path: '', component: AppMainComponent,
+  children: [
+    {
+      path:'dashboard',
+      loadChildren: () => import ('./protected/protected.module').then ( m => m.ProtectedModule)
+    },
+  
+    { path: 'basicos', component: BasicosComponent },  
+    { path: 'perfil', component: PerfilComponent },
+    { path: 'numeros', component: NumerosComponent },
+    { path: 'no-comunes', component: NoComunesComponent },
+    { path: 'ordenar', component: OrdenarComponent },
+    { path: 'comision', component: ComisionComponent },
+    { path: 'comisionAfiliado', component: ComisionAfiliadoComponent },
+    { path: 'comisionProducto', component: ComisionProductoComponent },
+    { path: 'comisionMarca', component: ComisionMarcaComponent },
+    { path: 'comisionLinea', component: ComisionLineaComponent },
+    { path: 'grupos', component: GruposComponent },
+    { path: 'objetivos', component: ObjetivosComponent },
+    { path: 'ventas', component: VentasComponent },
+    { path: 'parametros', component: AdministracionComponent, 
+    data: {
+        reuseComponent: true
+      }
+    },
+    { path: 'presentacion', component: PresentacionComponent },
+    { path: 'codificacion', component: CodificacionComponent },
+    { path: 'tax',component: AdministracionComponent },
+    { path: 'registro', component: RegistroComponent },
+    { path: 'userDashboard', component: DashboardComponent },
+    { path: 'ventasUsuario/:id/:nombre', component: VentasUsuarioComponent },
+    { path: 'pagos',component: PagosComponent },
+    { path: 'registro/:code',component: RegistroComponent }
+    
+  ]
+  
+  },
+  { path: '**', redirectTo: '' }
+/*  {
     path:'dashboard',
     loadChildren: () => import ('./protected/protected.module').then ( m => m.ProtectedModule)
-  },
-  {
-    path: 'basicos',
-    component: BasicosComponent
-  },
+  },*/
+ /*
   {
     path: 'perfil',
     component: PerfilComponent
@@ -131,7 +165,7 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: ''
-  }
+  }*/
 ]
 
 @NgModule({

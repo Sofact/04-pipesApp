@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_SERVICIOS: "HTTP://208.109.37.247:8090/"
+  URL_SERVICIOS: "http://localhost:8090/"
 };
 
 /*

@@ -26,6 +26,7 @@ export class TableClientesComponent implements OnInit {
 
   customer: Customer | undefined;
   customers: Customer[]=[];
+  userId: number=0;
 
 
   loading: boolean = false;
@@ -39,6 +40,7 @@ export class TableClientesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.userId = JSON.parse(localStorage.getItem("id") ?? '');
       
 
       this.viewVentasService.getViewVentas()
@@ -46,7 +48,7 @@ export class TableClientesComponent implements OnInit {
           this.viewVentas = respuesta;
         })
 
-        this.viewVentasService.getViewVentasTotalByUser(1)
+        this.viewVentasService.getViewVentasTotal()
         .subscribe ((respuesta) => {
         
           this.total = respuesta;

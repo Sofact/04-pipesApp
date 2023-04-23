@@ -14,6 +14,7 @@ const routes: Routes = [
       
       { path: 'login', component: LoginComponent },
       { path: 'loginCliente/:code', component: LoginClientesComponent },
+      { path: 'loginCliente', component: LoginClientesComponent },
       { path: 'registro', component: RegisterComponent },
       { path: '**', redirectTo: 'login' },
     ]

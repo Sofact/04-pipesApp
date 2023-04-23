@@ -61,7 +61,7 @@ export class CodigosService {
    
    }
 
-   updateCodigo(codCodigo: string): Observable<Codigo>{
+   updateCodigo(codCodigo: string | null): Observable<Codigo>{
 
   
   
