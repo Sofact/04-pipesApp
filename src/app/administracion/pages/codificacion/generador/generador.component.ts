@@ -65,7 +65,11 @@ export class GeneradorComponent implements OnInit {
     
 
     this.codigoService.saveCodigo(this.codigo)
-    .subscribe(response => this.router.navigate(['/presentacion']));
+    .subscribe((data: any) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    });
   }
   editar(){}
   borrar(){}

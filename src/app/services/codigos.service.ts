@@ -14,7 +14,8 @@ export class CodigosService {
 
 
   private urlEndpoint: string = URL_SERVICIOS+'codigos/all';
-  private urlSaveEndpoint: string = URL_SERVICIOS+'codigos/save';
+  //private urlSaveEndpoint: string = URL_SERVICIOS+'codigos/save';
+  private urlSaveEndpoint: string = URL_SERVICIOS+'generate-pdf';
   private urlUpdateEndpoint: string = URL_SERVICIOS+'codigos/update';
 
   private httpHeaders = new HttpHeaders()
@@ -49,16 +50,10 @@ export class CodigosService {
       );
   }
 
-  saveCodigo(codigo: Codigo): Observable<Codigo>{
+  saveCodigo(codigo: Codigo){
 
   
-    return this.http.post<Codigo>(this.urlSaveEndpoint, codigo, {headers: this.httpHeaders}).pipe(
-      
-      tap(() => {
-        this._refresh$.next();
-      })
-    );
-   
+    return this.http.post(this.urlSaveEndpoint, codigo, { responseType: 'blob' });
    }
 
    updateCodigo(codCodigo: string | null): Observable<Codigo>{
