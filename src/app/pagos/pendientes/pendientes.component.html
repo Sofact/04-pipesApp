@@ -10,7 +10,9 @@
     </div>
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon">$</span>
-            <input type="text" pInputText placeholder="Valor a filtrar" />
+            <input type="text" pInputText placeholder="Valor a filtrar" 
+                     [(ngModel)]="precioMinimo" 
+                    />
             <span class="p-inputgroup-addon">.00</span>
         </div>
 
@@ -20,13 +22,18 @@
        </div>
        <div class="p-inputgroup">
         
+             <p-button label="Filtrar" icon="pi pi-download"  (click)="filtrarValor()"></p-button>
+
+        </div>
+       <div class="p-inputgroup">
+        
             <p-button label="Descargar" icon="pi pi-download"></p-button>
 
        </div>
     </div>
     </div>
     
-    <p-table #dt1 [value]="ViewPagosGrouped" dataKey="id"
+    <p-table #dt1 [value]="pagosFiltrados" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['usuNombre','sumValor','cliBanco']">
@@ -49,6 +56,7 @@
                         <p-columnFilter type="text" field="sumValor" display="menu"></p-columnFilter>
                     </div>
                 </th>
+
                 <th style="min-width:15rem">
                     <div class="flex ">
                         Información Bancaria
@@ -60,22 +68,22 @@
                 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-ViewPagosGroup>
+        <ng-template pTemplate="body" let-pagosFiltrados>
             <tr>
                 <td>
-                    <a [routerLink]="['../ventasUsuario', ViewPagosGroup.usuId, ViewPagosGroup.usuNombre]" >
-                        {{ViewPagosGroup.usuNombre}}    
+                    <a [routerLink]="['../ventasUsuario', pagosFiltrados.usuId, pagosFiltrados.usuNombre]" >
+                        {{pagosFiltrados.usuNombre}}    
                         </a> 
                     <br>
-                    {{ViewPagosGroup.usuCorreo}}
+                    {{pagosFiltrados.usuCorreo}}
                 </td>
                 <td>
-                    ${{ViewPagosGroup.sumValor}}
+                    ${{pagosFiltrados.sumValor}}
                 </td>
                 <td>
-                    {{ViewPagosGroup.cliBanco}}
+                    {{pagosFiltrados.cliBanco}}
                     <br>
-                    #{{ViewPagosGroup.cliNumCuenta}}
+                    #{{pagosFiltrados.cliNumCuenta}}
                 </td>
                
                 
