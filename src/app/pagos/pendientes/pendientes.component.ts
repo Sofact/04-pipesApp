@@ -15,7 +15,9 @@ export class PendientesComponent implements OnInit {
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
 
-  ViewPagosGrouped: ViewPagosGrouped[]=[];
+  viewPagosGrouped: ViewPagosGrouped[]=[];
+  pagosFiltrados: ViewPagosGrouped[] = [];
+  precioMinimo: number =0;
 
   usuId: number=0;
 
@@ -31,7 +33,7 @@ export class PendientesComponent implements OnInit {
 
 
   constructor(private viewComisionService: ViewComisionService,
-              private viewPagosgroupedService:  ViewPagosgroupedService
+              private viewPagosgroupedService:  ViewPagosgroupedService 
                 ) { }
 
                 items!: any[];
@@ -54,7 +56,7 @@ export class PendientesComponent implements OnInit {
       .subscribe ((respuesta) => {
       
         this.viewComisiones = respuesta;
-      }) 
+      })
 
       this.viewComisionService.getViewComisionEstadoTotal('pendiente', this.usuId)
       .subscribe ((respuesta) => {
@@ -65,13 +67,43 @@ export class PendientesComponent implements OnInit {
       this.viewPagosgroupedService.getViewPagosGroupedByEstado('pendiente')
       .subscribe ((respuesta) => {
 
-        this.ViewPagosGrouped = respuesta
+        this.viewPagosGrouped = respuesta
+
+        this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
+          console.log(item.sumValor);
+          console.log(this.precioMinimo);
+          return item.sumValor >= this.precioMinimo;
+        });
+       
+
+         
       })
 
 
-
-     
+      
   }
+
+  filtrarValor(){
+
+    console.log('Valor a filtrar:', this.precioMinimo);
+
+    this.viewPagosgroupedService.getViewPagosGroupedByEstado('pendiente')
+      .subscribe ((respuesta) => {
+
+        this.viewPagosGrouped = respuesta
+
+        this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
+          console.log(item.sumValor);
+          console.log(this.precioMinimo);
+          return Number(item.sumValor) >= Number(this.precioMinimo);
+        });
+       
+
+         
+      })
+
+  }
+ 
 
   clear( ) {
       console.log("limpiar");
