@@ -18,6 +18,7 @@ export class PendientesComponent implements OnInit {
   viewPagosGrouped: ViewPagosGrouped[]=[];
   pagosFiltrados: ViewPagosGrouped[] = [];
   precioMinimo: number =0;
+  checked:boolean= true;
 
   usuId: number=0;
 
