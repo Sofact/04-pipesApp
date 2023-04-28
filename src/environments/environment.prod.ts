@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_SERVICIOS: "208.109.37.247:8090/"
+  URL_SERVICIOS: "http://localhost:8090/"
 };
