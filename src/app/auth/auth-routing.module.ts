@@ -4,6 +4,8 @@ import { LoginClientesComponent } from './pages/login-clientes/login-clientes.co
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RestaurarContraComponent } from './pages/restaurar-contra/restaurar-contra.component';
+
 
 const routes: Routes = [
   
@@ -16,6 +18,7 @@ const routes: Routes = [
       { path: 'loginCliente/:code', component: LoginClientesComponent },
       { path: 'loginCliente', component: LoginClientesComponent },
       { path: 'registro', component: RegisterComponent },
+      { path: 'restaurar', component: RestaurarContraComponent },
       { path: '**', redirectTo: 'login' },
     ]
   }

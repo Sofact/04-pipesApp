@@ -5,6 +5,7 @@ import { CustomerService } from 'src/app/shared/customer.service';
 import { ViewComision } from 'src/app/shared/models/ViewComision';
 import { ViewPagosgroupedService } from '../../services/view-pagosgrouped.service';
 import { ViewPagosGrouped } from '../../shared/models/ViewPagosGrouped';
+import { Standar } from 'src/app/shared/models/Standar';
 
 @Component({
   selector: 'app-pendientes',
@@ -19,6 +20,10 @@ export class PendientesComponent implements OnInit {
   pagosFiltrados: ViewPagosGrouped[] = [];
   precioMinimo: number =0;
   checked:boolean= true;
+
+  seleccionados: Standar[] = []
+                       
+  checked: boolean =true;
 
   usuId: number=0;
 
@@ -70,9 +75,11 @@ export class PendientesComponent implements OnInit {
 
         this.viewPagosGrouped = respuesta
 
+        this.seleccionados = this.viewPagosGrouped.map(({ usuId, usuCorreo }) => ({ usuId, usuCorreo }));
+
+
         this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
-          console.log(item.sumValor);
-          console.log(this.precioMinimo);
+     
           return item.sumValor >= this.precioMinimo;
         });
        

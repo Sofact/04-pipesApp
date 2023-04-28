@@ -14,6 +14,9 @@ import { AppRouterModule } from './app-router.module';
 import { VentasModule } from './ventas/ventas.module';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
+import Swal from 'sweetalert2';
+
 
 
 //cambiar el idioma global de la app
@@ -46,6 +49,7 @@ import { MarcasComponent } from './administracion/pages/marcas/marcas.component'
 import { CodificacionComponent } from './administracion/pages/codificacion/codificacion.component';
 import { GeneradorComponent } from './administracion/pages/codificacion/generador/generador.component';
 import { ProductosComponent } from './administracion/pages/productos/productos/productos.component';
+
 import { TableComponent } from './administracion/pages/productos/table/table.component';
 import { TablePendientesComponent } from './usuario/dashboard/table-pendientes/table-pendientes.component';
 import { TablePagadoComponent } from './usuario/dashboard/table-pagado/table-pagado.component';
@@ -112,6 +116,7 @@ registerLocaleData( localFr );
     imports: [
         AutoCompleteModule,
         CalendarModule,
+        CheckboxModule,
         CommonModule,
         RouterModule.forRoot([]),
         BrowserModule,
