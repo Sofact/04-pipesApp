@@ -46,6 +46,13 @@
             <tr>
                 <th style="min-width:10rem">
                     <div class="flex ">
+                        <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
+                    </div>
+                </th>
+
+                
+                <th style="min-width:10rem">
+                    <div class="flex ">
                         Usuario
                         <p-columnFilter type="text" field="usuNombre" display="menu"></p-columnFilter>
                     </div>

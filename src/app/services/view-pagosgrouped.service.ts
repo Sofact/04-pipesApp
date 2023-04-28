@@ -34,4 +34,12 @@ export class ViewPagosgroupedService {
         map(result => result as ViewPagosGrouped[])
       )
   }
+
+  getViewPagosGroupedByEstadoTotal(estado: string): Observable<ViewPagosGrouped[]>{
+  
+    return this.http.get<ViewPagosGrouped[]>(this.urlEndpoint+"/pendiente", {headers: this.httpHeaders}).pipe(
+      
+        map(result => result as ViewPagosGrouped[])
+      )
+  }
 }
