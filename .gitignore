@@ -46,3 +46,4 @@ angular.json
 angular.json
 package-lock.json
 src/web.config
+src/environments/environment.prod.ts
