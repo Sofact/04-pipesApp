@@ -9,6 +9,7 @@ import { MainComponent } from './pages/main/main.component';
 import { RegisterDataComponent } from './pages/register-data/register-data.component';
 import { LoginClientesComponent } from './pages/login-clientes/login-clientes.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { RestaurarContraComponent } from './pages/restaurar-contra/restaurar-contra.component';
 
 
 
@@ -18,7 +19,8 @@ import { DropdownModule } from 'primeng/dropdown';
     RegisterComponent,
     MainComponent,
     RegisterDataComponent,
-    LoginClientesComponent
+    LoginClientesComponent,
+    RestaurarContraComponent
   ],
   imports: [
     AuthRoutingModule,

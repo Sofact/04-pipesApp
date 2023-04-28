@@ -44,7 +44,7 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th style="min-width:10rem">
+                <th style="min-width:3rem">
                     <div class="flex ">
                         <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
                     </div>
@@ -77,6 +77,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-pagosFiltrados>
             <tr>
+                <td>
+                    <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="{{pagosFiltrados.usuId}}" ></p-checkbox>
+                </td>
                 <td>
                     <a [routerLink]="['../ventasUsuario', pagosFiltrados.usuId, pagosFiltrados.usuNombre]" >
                         {{pagosFiltrados.usuNombre}}    
