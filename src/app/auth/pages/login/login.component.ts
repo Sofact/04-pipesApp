@@ -52,7 +52,7 @@ export class LoginComponent {
 
       }else{
         if(resp.error.error == 'Unauthorized'){
-          Swal.fire( 'Error','El correo o contraseña ingresados son incorrectos <br><a href="/auth/restaurar">Olvidaste tu contraseña?</a>', 'error');
+          Swal.fire( 'Atención','El correo o contraseña ingresados son incorrectos <br><a href="/auth/restaurar">Olvidaste tu contraseña?</a>', 'warning');
           console.log("unauthorized")
         }
       }

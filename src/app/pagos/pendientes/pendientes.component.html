@@ -22,9 +22,14 @@
        </div>
        <div class="p-inputgroup">
         
-             <p-button label="Filtrar" icon="pi pi-download"  (click)="filtrarValor()"></p-button>
+             <p-button label="Filtrar" icon="pi pi-filter"  (click)="filtrarValor()"></p-button>
 
         </div>
+        <div class="p-inputgroup">
+        
+            <p-button label="Pagar" icon="pi pi-money-bill"  (click)="filtrarValor()"></p-button>
+
+       </div>
        <div class="p-inputgroup">
         
             <p-button label="Descargar" icon="pi pi-download"></p-button>
@@ -78,7 +83,7 @@
         <ng-template pTemplate="body" let-pagosFiltrados>
             <tr>
                 <td>
-                    <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="{{pagosFiltrados.usuId}}" ></p-checkbox>
+                    <p-checkbox [(ngModel)]="pagosFiltrados.usuId" [binary]="true" inputId="{{pagosFiltrados.usuId}}" ></p-checkbox>
                 </td>
                 <td>
                     <a [routerLink]="['../ventasUsuario', pagosFiltrados.usuId, pagosFiltrados.usuNombre]" >

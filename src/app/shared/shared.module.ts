@@ -9,7 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CustomerService } from './customer.service';
-
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { CustomerService } from './customer.service';
     MultiSelectModule,
     FormsModule,
     ProgressBarModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   exports:[
     MenuComponent,
@@ -37,7 +38,8 @@ import { CustomerService } from './customer.service';
   ],
   providers:[
   
-    CustomerService
+    CustomerService,
+    DatePipe
   ]
 })
 export class SharedModule { }

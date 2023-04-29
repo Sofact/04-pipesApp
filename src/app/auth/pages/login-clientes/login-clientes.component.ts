@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-clientes',
@@ -56,7 +57,7 @@ login(){
 
         }else{
           if(resp.error.error == 'Unauthorized'){
-          
+            Swal.fire( 'Atención','El correo o contraseña ingresados son incorrectos <br><a href="/auth/restaurar">Olvidaste tu contraseña?</a>', 'warning');
             console.log("unauthorized")
           }
         }
@@ -77,8 +78,8 @@ login(){
 
           }else{
             if(resp.error.error == 'Unauthorized'){
-            
-              console.log("unauthorized")
+              Swal.fire( 'Atención','El correo o contraseña ingresados son incorrectos <br><a href="/auth/restaurar">Olvidaste tu contraseña?</a>', 'warning');
+               console.log("unauthorized")
             }
           }
           
