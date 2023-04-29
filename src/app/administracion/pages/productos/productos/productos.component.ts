@@ -48,7 +48,7 @@ export class ProductosComponent implements OnInit {
     this.productoService.SaveProductos(this.producto)
     .subscribe((response: any) => {
       console.log(response);
-      if(response.error.message == 'could not execute statement; SQL [n/a]; constraint [null]'){
+      if(response.ve.error.message == 'could not execute statement; SQL [n/a]; constraint [null]'){
         Swal.fire( 'Atención','El código sku ya se encuentra regitrado', 'warning');
       }
       this.router.navigate(['/parametros'])

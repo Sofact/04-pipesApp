@@ -50,7 +50,7 @@ export class TableComponent implements OnInit {
         this.productosService.getProductos() 
           .subscribe ((respuesta) => {
       
-          this.productos = respuesta;
+          this.productos = respuesta.reverse();
   
         
         }) 
@@ -62,7 +62,8 @@ export class TableComponent implements OnInit {
       this.productosService.getProductos()
       .subscribe ((respuesta) => {
       
-        this.productos = respuesta;
+        this.productos = respuesta.reverse();
+  
 
       
       }) 

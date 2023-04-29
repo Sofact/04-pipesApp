@@ -34,13 +34,13 @@ export class TableComponent implements OnInit {
               private viewCodigosService: ViewCodigosService) { }
 
   ngOnInit() {
-/*
+
     this.viewCodigosService.getViewCodigos()
     .subscribe((respuesta)=>{
       console.log("El valor de la respuesta",respuesta);
-      this.viewCodigos =respuesta;
+      this.viewCodigos =respuesta.reverse();
     })
-   */
+   /*
       this.codigosServices.getCodigos()
       .subscribe ((respuesta) => {
        //console.log("respuesta", respuesta);
@@ -48,7 +48,7 @@ export class TableComponent implements OnInit {
 
       
       }) 
-        
+       */ 
   }
 
   clear( ) {
