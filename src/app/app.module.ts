@@ -14,7 +14,6 @@ import { AppRouterModule } from './app-router.module';
 import { VentasModule } from './ventas/ventas.module';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CalendarModule } from 'primeng/calendar';
-import { CheckboxModule } from 'primeng/checkbox';
 import Swal from 'sweetalert2';
 
 
