@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosService } from '../../../../services/productos.service';
 import { Producto } from './Producto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -45,7 +46,13 @@ export class ProductosComponent implements OnInit {
     this.producto.proReferencia = this.sku;
     this.producto.proValor = this.valor;
     this.productoService.SaveProductos(this.producto)
-    .subscribe(response => this.router.navigate(['/parametros']));
-  
+    .subscribe((response: any) => {
+      console.log(response);
+      if(response.error.message == 'could not execute statement; SQL [n/a]; constraint [null]'){
+        Swal.fire( 'Atención','El código sku ya se encuentra regitrado', 'warning');
+      }
+      this.router.navigate(['/parametros'])
+      });
+    
   }
 }

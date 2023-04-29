@@ -1,6 +1,6 @@
 <div class="card">
   
-    <p-table #dt1 [value]="codigos" dataKey="id"
+    <p-table #dt1 [value]="viewCodigos" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['Codigo','country.name','representative.name','status']">
@@ -71,26 +71,26 @@
                 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-codigos>
+        <ng-template pTemplate="body" let-viewCodigos>
             <tr>
                 <td>
-                    {{codigos.codCodigo}}
+                    {{viewCodigos.codCodigo}}
                 </td>
                 <td>
-                    {{codigos.codEstado}}
+                    {{viewCodigos.codEstado}}
                 </td>
                 <td>
-                    <a href="{{codigos.codUrl}}">{{codigos.codUrl}} </a>
+                    <a href="{{viewCodigos.codUrl}}">{{viewCodigos.codUrl}} </a>
                     
                 </td>
                 <td>
-                    {{codigos.usuId }}
+                    {{viewCodigos.userEmail }}
                 </td>
                 <td>
-                    {{codigos.proId }}
+                    {{viewCodigos.proDescripcion }}
                 </td>
                 <td>
-                    {{codigos.codFecha }}
+                    {{viewCodigos.codFecha }}
                 </td>
             </tr>
         </ng-template>

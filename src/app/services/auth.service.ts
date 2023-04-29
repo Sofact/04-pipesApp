@@ -18,7 +18,6 @@ export class AuthService {
 
   private httpHeaders = new HttpHeaders()
   .append('Content-Type', 'Application/json')
-  .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
   .append('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS');
 
   

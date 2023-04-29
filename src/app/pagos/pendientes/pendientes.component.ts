@@ -23,7 +23,7 @@ export class PendientesComponent implements OnInit {
 
   seleccionados: Standar[] = []
                        
-  checked: boolean =true;
+
 
   usuId: number=0;
 
