@@ -4,6 +4,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 import { AppComponent } from './app.component';
@@ -128,7 +129,8 @@ registerLocaleData( localFr );
         PrimeNgModule,
         FormsModule,
         SharedModule,
-        HttpClientModule
+        HttpClientModule,
+        CheckboxModule
     ]
 }
 )

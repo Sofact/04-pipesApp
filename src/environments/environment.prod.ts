@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_SERVICIOS: "http://localhost:8090/"
+  URL_SERVICIOS: "https://sellycash.com:8090/"
 };
