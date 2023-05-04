@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductosService } from '../../../../services/productos.service';
 import { Producto } from './Producto';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-productos',
@@ -45,14 +46,35 @@ export class ProductosComponent implements OnInit {
     this.producto.proDescripcion=this.descripcion;
     this.producto.proReferencia = this.sku;
     this.producto.proValor = this.valor;
+    console.log("El producto::", this.producto);
     this.productoService.SaveProductos(this.producto)
+
+
     .subscribe((response: any) => {
       console.log(response);
-      if(response.ve.error.message == 'could not execute statement; SQL [n/a]; constraint [null]'){
-        Swal.fire( 'Atención','El código sku ya se encuentra regitrado', 'warning');
-      }
+      
       this.router.navigate(['/parametros'])
-      });
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error en la solicitud:', error);
+        let mensaje = 'Ha ocurrido un error en la solicitud.';
+  
+        if (error.status === 500) {
+          mensaje = 'El sku que ingreso ya se encuentra asociado';
+        } else if (error.status === 401) {
+          mensaje = 'No está autorizado para acceder a estos datos.';
+        }else {
+          mensaje = 'Error general';
+        }
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: mensaje
+        });
+      }
+
+      );
     
   }
 }
