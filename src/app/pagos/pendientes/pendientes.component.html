@@ -51,12 +51,7 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th style="min-width:3rem">
-                    <div class="flex ">
-                        <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
-                    </div>
-                </th>
-
+             
                 
                 <th style="min-width:10rem">
                     <div class="flex ">
@@ -89,11 +84,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-pagosFiltrados>
             <tr>
-                <td >
-                    
-                        <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
-                   
-                </td>
+              
                 <td>
                     <p-checkbox [(ngModel)]="pagosFiltrados.usuId" [binary]="true" inputId="{{pagosFiltrados.usuId}}" ></p-checkbox>
                 </td>
