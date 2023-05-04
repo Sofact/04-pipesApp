@@ -5,6 +5,7 @@ import { CodigosService } from '../../services/codigos.service';
 import { Codigo } from 'src/app/administracion/pages/codificacion/Codigo';
 import { ViewCodigos } from '../models/ViewCodigos';
 import { ViewCodigosService } from 'src/app/services/view-codigos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -31,7 +32,8 @@ export class TableComponent implements OnInit {
   activityValues: number[] = [0, 100];
 
   constructor(private codigosServices: CodigosService, 
-              private viewCodigosService: ViewCodigosService) { }
+              private viewCodigosService: ViewCodigosService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -39,7 +41,11 @@ export class TableComponent implements OnInit {
     .subscribe((respuesta)=>{
       console.log("El valor de la respuesta",respuesta);
       this.viewCodigos =respuesta.reverse();
+      
+    
     })
+
+   
    /*
       this.codigosServices.getCodigos()
       .subscribe ((respuesta) => {
@@ -51,6 +57,7 @@ export class TableComponent implements OnInit {
        */ 
   }
 
+ 
   clear( ) {
       console.log("limpiar");
   }
