@@ -1,6 +1,6 @@
 export interface Standar {
 
-    usuId: number,
-    usuCorreo: string
+    user_id: number,
+    user_email: string
    
 }

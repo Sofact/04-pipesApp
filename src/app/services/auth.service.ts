@@ -53,8 +53,11 @@ export class AuthService {
     return localStorage.getItem("id");
   }
 
+  public getRole(): string | null {
+    return localStorage.getItem("role");
+  }
+
   login(username:string, password: string){
-  
 //let url = URL_SERVICIOS+'/login';
 console.log("los valores a enviar", username, password);
 
@@ -115,9 +118,11 @@ console.log("los valores a enviar", username, password);
   storeLocalStorageToken(auth: any){
 
     if(auth.accessToken){
+      console.log("local::", auth);
       localStorage.setItem("token", auth.accessToken);
       localStorage.setItem("user",  JSON.stringify( auth.email));
       localStorage.setItem("id", JSON.stringify( auth.id));
+      localStorage.setItem("role", JSON.stringify( auth.roles));
       this.token = auth.access_token;
       this.user = auth.user;
       return true;

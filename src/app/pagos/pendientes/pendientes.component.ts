@@ -6,6 +6,7 @@ import { ViewComision } from 'src/app/shared/models/ViewComision';
 import { ViewPagosgroupedService } from '../../services/view-pagosgrouped.service';
 import { ViewPagosGrouped } from '../../shared/models/ViewPagosGrouped';
 import { Standar } from 'src/app/shared/models/Standar';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pendientes',
@@ -16,8 +17,12 @@ export class PendientesComponent implements OnInit {
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
 
+
+
   viewPagosGrouped: ViewPagosGrouped[]=[];
   pagosFiltrados: ViewPagosGrouped[] = [];
+
+  selectedItems: ViewPagosGrouped[] = [];
   precioMinimo: number =0;
   checked:boolean= true;
 
@@ -39,7 +44,8 @@ export class PendientesComponent implements OnInit {
 
 
   constructor(private viewComisionService: ViewComisionService,
-              private viewPagosgroupedService:  ViewPagosgroupedService 
+              private viewPagosgroupedService:  ViewPagosgroupedService,
+              private datePipe: DatePipe 
                 ) { }
 
                 items!: any[];
@@ -47,7 +53,9 @@ export class PendientesComponent implements OnInit {
                 selectedItem: any;
             
                 suggestions!: any[];
-                date!: Date;
+                date: Date =  new Date();
+                formato: string = 'dd/MM/yyyy';
+                formattedDate: any = this.datePipe.transform(this.date, 'yyyy-MM-dd');
             
                 search(event:any) {
                     this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
@@ -70,17 +78,21 @@ export class PendientesComponent implements OnInit {
         this.total = respuesta;
       }) 
 
-      this.viewPagosgroupedService.getViewPagosGroupedByEstado('pendiente')
+      console.log("fecha::", this.date);
+
+      this.viewPagosgroupedService.getViewPagosGroupedByEstadoFecha(this.formattedDate.toString())
       .subscribe ((respuesta) => {
 
-        this.viewPagosGrouped = respuesta
+        this.viewPagosGrouped = respuesta;
+        console.log("REsp::", this.date, this.viewPagosGrouped);
 
-        this.seleccionados = this.viewPagosGrouped.map(({ usuId, usuCorreo }) => ({ usuId, usuCorreo }));
+        this.seleccionados = this.viewPagosGrouped.map(({ user_id, user_email }) => ({ user_id, user_email }));
 
 
         this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
      
-          return item.sumValor >= this.precioMinimo;
+          return item.sum >= this.precioMinimo;
+
         });
        
 
@@ -92,24 +104,58 @@ export class PendientesComponent implements OnInit {
   }
 
   filtrarValor(){
+    
+    this.formattedDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
 
-    console.log('Valor a filtrar:', this.precioMinimo);
 
+    console.log('Valor a filtrar:', this.formattedDate.toString());
+
+    this.viewPagosgroupedService.getViewPagosGroupedByEstadoFecha(this.formattedDate.toString())
+    .subscribe ((respuesta) => {
+
+      this.viewPagosGrouped = respuesta;
+      console.log("REsp::", this.date, this.viewPagosGrouped);
+
+      this.seleccionados = this.viewPagosGrouped.map(({ user_id, user_email }) => ({ user_id, user_email }));
+
+
+      this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
+   
+        return item.sum >= this.precioMinimo;
+
+      });
+     
+
+       
+    })
+/*
     this.viewPagosgroupedService.getViewPagosGroupedByEstado('pendiente')
       .subscribe ((respuesta) => {
 
         this.viewPagosGrouped = respuesta
 
         this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
-          console.log(item.sumValor);
+          console.log(item);
           console.log(this.precioMinimo);
-          return Number(item.sumValor) >= Number(this.precioMinimo);
+          return Number(item.sum) >= Number(this.precioMinimo);
         });
        
 
          
-      })
+      })*/
 
+  }
+
+  pagar(){
+  
+    console.log("Pagando", this.selectedItems);
+  }
+
+  onCheckboxChange() {
+
+    console.log("el change::", this.selectedItems);
+    this.selectedItems = this.pagosFiltrados.filter((pagoFiltrado: ViewPagosGrouped) => pagoFiltrado.selected);
+    
   }
  
 

@@ -29,7 +29,7 @@
         </div>
         <div class="p-inputgroup">
         
-            <p-button label="Pagar" icon="pi pi-money-bill"  (click)="filtrarValor()"></p-button>
+            <p-button label="Pagar" icon="pi pi-money-bill"  (click)="pagar()"></p-button>
 
        </div>
        <div class="p-inputgroup">
@@ -86,22 +86,22 @@
             <tr>
               
                 <td>
-                    <p-checkbox [(ngModel)]="pagosFiltrados.usuId" [binary]="true" inputId="{{pagosFiltrados.usuId}}" ></p-checkbox>
+                    <p-checkbox [(ngModel)]="pagosFiltrados.user_id" name="{{pagosFiltrados.user_id}}"  (change)="onCheckboxChange()" [binary]="true" inputId="{{pagosFiltrados.user_id}}" ></p-checkbox>
                 </td>
                 <td>
-                    <a [routerLink]="['../ventasUsuario', pagosFiltrados.usuId, pagosFiltrados.usuNombre]" >
-                        {{pagosFiltrados.usuNombre}}    
+                    <a [routerLink]="['../ventasUsuario', pagosFiltrados.user_id, pagosFiltrados.user_nombre]" >
+                        {{pagosFiltrados.usu_nombre}}    
                         </a> 
                     <br>
-                    {{pagosFiltrados.usuCorreo}}
+                    {{pagosFiltrados.user_email}}
                 </td>
                 <td>
-                    ${{pagosFiltrados.sumValor}}
+                    ${{pagosFiltrados.sum}}
                 </td>
                 <td>
-                    {{pagosFiltrados.cliBanco}}
+                    {{pagosFiltrados.cli_banco}}
                     <br>
-                    #{{pagosFiltrados.cliNumCuenta}}
+                    #{{pagosFiltrados.cli_num_cuenta}}
                 </td>
                
                 

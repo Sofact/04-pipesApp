@@ -1,15 +1,16 @@
 export interface ViewPagosGrouped {
 
-    usuId: number,
-    convEstado: string,
-    usuCorreo: string,
-    usuNombre: string,
-    cliBanco: string, 
-    cliNumCuenta: string,
-    cliTipoCuenta: string,
-    covNombre: string,
-    covId: number,
-    sumValor: number
+    user_id: number,
+    conv_estado: string,
+    user_email: string,
+    user_nombre: string,
+    cli_banco: string, 
+    cli_num_cuenta: string,
+    cli_tipo_cuenta: string,
+    cov_nombre: string,
+    cov_id: number,
+    sum: number,
+    selected: boolean
 
 
 }

@@ -48,7 +48,15 @@ export class LoginComponent {
       console.log(resp);
       if(!resp.error && resp){
         console.log("Ingreso al submit::::", resp);
-        this.router.navigate(['/dashboard']);
+
+        if( this.isAdmin()){
+
+          this.router.navigate(['/dashboard']);
+        }else{
+          Swal.fire( 'Atención','Usted no esta autorizado para acceder a este recurso, comuniquese con el Administrador', 'warning');
+        }
+       
+        
 
       }else{
         if(resp.error.error == 'Unauthorized'){
@@ -63,6 +71,16 @@ export class LoginComponent {
     
   }
 
+  isAdmin(){
+    console.log("ingreso a is admin", localStorage.getItem("role"));
   
+    if(localStorage.getItem("role") == '1'){
+
+      return true
+    }else{
+      return false;
+    }
+   
+  }
 
 }

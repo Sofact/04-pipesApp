@@ -10,9 +10,10 @@ import { URL_SERVICIOS } from '../config/config';
 export class ViewPagosgroupedService {
 
   private urlEndpoint: string = URL_SERVICIOS+'pagosGroup/all';
+  private urlEndpointFecha: string = URL_SERVICIOS+'pagosGroup/all/fecha';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
-          .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
+
 
 
 
@@ -38,6 +39,14 @@ export class ViewPagosgroupedService {
   getViewPagosGroupedByEstadoTotal(estado: string): Observable<ViewPagosGrouped[]>{
   
     return this.http.get<ViewPagosGrouped[]>(this.urlEndpoint+"/pendiente", {headers: this.httpHeaders}).pipe(
+      
+        map(result => result as ViewPagosGrouped[])
+      )
+  }
+
+  getViewPagosGroupedByEstadoFecha(fecha: string): Observable<ViewPagosGrouped[]>{
+  
+    return this.http.get<ViewPagosGrouped[]>(this.urlEndpointFecha+"/"+fecha, {headers: this.httpHeaders}).pipe(
       
         map(result => result as ViewPagosGrouped[])
       )
