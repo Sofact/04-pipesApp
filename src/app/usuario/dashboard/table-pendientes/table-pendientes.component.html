@@ -52,7 +52,7 @@
                     {{viewComision.comFecha | date: 'dd/MM/yyyy'}}
                 </td>
                 <td>
-                    {{viewComision.comValor}}               
+                    {{viewComision.comValor | currency:'':'':'1.0-0'}}               
                 </td>
                 <td>
                     {{viewComision.comEstado}}               
@@ -63,7 +63,7 @@
             <tr>
                 <td></td>
                 <td>TOTAL</td>
-                <td>{{total}}</td>
+                <td>{{total | currency:'':'':'1.0-0'}}</td>
                 <td></td>
             </tr>
         </ng-template>

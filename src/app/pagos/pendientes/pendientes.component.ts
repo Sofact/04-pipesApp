@@ -7,6 +7,11 @@ import { ViewPagosgroupedService } from '../../services/view-pagosgrouped.servic
 import { ViewPagosGrouped } from '../../shared/models/ViewPagosGrouped';
 import { Standar } from 'src/app/shared/models/Standar';
 import { DatePipe } from '@angular/common';
+import { ComisionService } from 'src/app/services/comision.service';
+import { ProductosService } from 'src/app/services/productos.service';
+import { Router } from '@angular/router';
+import { PagosService } from 'src/app/services/pagos.service';
+import { Pagos } from 'src/app/shared/models/Pagos';
 
 @Component({
   selector: 'app-pendientes',
@@ -17,12 +22,17 @@ export class PendientesComponent implements OnInit {
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
 
-
+ pagosave: Pagos = {
+                    pagId : 0, 
+                    pagValor: 0,
+                    pagFecha: '',
+                    usuId: 0
+                    };
 
   viewPagosGrouped: ViewPagosGrouped[]=[];
   pagosFiltrados: ViewPagosGrouped[] = [];
 
-  selectedItems: ViewPagosGrouped[] = [];
+  selectedOptions: ViewPagosGrouped[] = [];
   precioMinimo: number =0;
   checked:boolean= true;
 
@@ -45,6 +55,8 @@ export class PendientesComponent implements OnInit {
 
   constructor(private viewComisionService: ViewComisionService,
               private viewPagosgroupedService:  ViewPagosgroupedService,
+              private comisionService: ComisionService,
+              private pagosService: PagosService,
               private datePipe: DatePipe 
                 ) { }
 
@@ -86,7 +98,7 @@ export class PendientesComponent implements OnInit {
         this.viewPagosGrouped = respuesta;
         console.log("REsp::", this.date, this.viewPagosGrouped);
 
-        this.seleccionados = this.viewPagosGrouped.map(({ user_id, user_email }) => ({ user_id, user_email }));
+        this.seleccionados = this.viewPagosGrouped.map(({ usu_id, user_email }) => ({ usu_id, user_email }));
 
 
         this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
@@ -116,7 +128,7 @@ export class PendientesComponent implements OnInit {
       this.viewPagosGrouped = respuesta;
       console.log("REsp::", this.date, this.viewPagosGrouped);
 
-      this.seleccionados = this.viewPagosGrouped.map(({ user_id, user_email }) => ({ user_id, user_email }));
+      this.seleccionados = this.viewPagosGrouped.map(({ usu_id, user_email }) => ({ usu_id, user_email }));
 
 
       this.pagosFiltrados = this.viewPagosGrouped.filter(item => {
@@ -148,16 +160,72 @@ export class PendientesComponent implements OnInit {
 
   pagar(){
   
-    console.log("Pagando", this.selectedItems);
+    
+    
+    this.pagosFiltrados.forEach( pagos => {
+
+
+
+
+    console.log("Pagando ",  this.pagosFiltrados);
+
+    if(pagos.selected){
+
+      const currentDate = new Date();
+      this.pagosave.pagFecha = this.datePipe.transform(currentDate, 'yyyy-MM-dd') ; 
+      this.pagosave.usuId = pagos.usu_id;
+      this.pagosave.pagValor = pagos.sum;
+
+    this.pagosService.savePagos(this.pagosave)
+    .subscribe( product => 
+        console.log(product)
+      );
+    
+    this.comisionService.updateComision(pagos.user_name, this.datePipe.transform(this.date, 'yyyy-MM-dd'))
+    .subscribe( product => 
+      
+      location.reload()
+      );
+
+    }
+    })
+  
+   
+    /*
+    this.pagosFiltrados.forEach( pagos => {
+    
+      if(pagos.selected){
+        console.log("actualizar ::"+ pagos.user_name+ "fecha"+ this.datePipe.transform(this.date, 'yyyy-MM-dd'));
+    //    this.comisionService.updateComision(pagos.user_name, this.datePipe.transform(this.date, 'yyyy-MM-dd'));
+        this.comisionService.getCodigos();
+      }
+
+    })*/
   }
 
-  onCheckboxChange() {
+  getSelectedOptions() {
 
-    console.log("el change::", this.selectedItems);
-    this.selectedItems = this.pagosFiltrados.filter((pagoFiltrado: ViewPagosGrouped) => pagoFiltrado.selected);
-    
+    return this.pagosFiltrados.filter((option, i) => this.selectedOptions)
+      .map(option => option as ViewPagosGrouped);
   }
  
+  checker(event: any, val: ViewPagosGrouped){
+    val.selected = !val.selected;
+    console.log("presionado::"+ event + val.user_email+ val.selected );
+
+    this.pagosFiltrados.forEach( pagos => {
+    
+      if(pagos.user_email == val.user_email){
+      
+        pagos.selected = val.selected; 
+      }
+    })
+
+    this.pagosFiltrados.forEach( pagos=>{
+    
+      console.log(pagos);
+    })
+  }
 
   clear( ) {
       console.log("limpiar");

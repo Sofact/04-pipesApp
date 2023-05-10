@@ -82,11 +82,11 @@
                 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-pagosFiltrados>
+        <ng-template pTemplate="body" let-pagosFiltrados let-index>
             <tr>
               
                 <td>
-                    <p-checkbox [(ngModel)]="pagosFiltrados.user_id" name="{{pagosFiltrados.user_id}}"  (change)="onCheckboxChange()" [binary]="true" inputId="{{pagosFiltrados.user_id}}" ></p-checkbox>
+                    <p-checkbox [(ngModel)]="pagosFiltrados.user_nombre" (onChange)="checker($event, pagosFiltrados)" name="{{pagosFiltrados.user_nombre}}"   [binary]="true"  ></p-checkbox>
                 </td>
                 <td>
                     <a [routerLink]="['../ventasUsuario', pagosFiltrados.user_id, pagosFiltrados.user_nombre]" >
@@ -96,7 +96,7 @@
                     {{pagosFiltrados.user_email}} 
                 </td>
                 <td>
-                    ${{pagosFiltrados.sum}}
+                    ${{pagosFiltrados.sum | currency:'':'':'1.0-0'}}
                 </td>
                 <td>
                     {{pagosFiltrados.cli_banco}}
@@ -109,9 +109,9 @@
         </ng-template>
         <ng-template pTemplate="footer">
             <tr>
-               
+               <td></td>
                 <td>TOTAL</td>
-                <td>${{total}}</td>
+                <td>${{total | currency:'':'':'1.0-0'}}</td>
                 <td></td>
 
             </tr>

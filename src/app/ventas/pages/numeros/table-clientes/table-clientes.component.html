@@ -74,7 +74,7 @@
                     {{viewVenta.comId}}
                 </td>
                 <td>
-                    {{viewVenta.comValor}}               
+                    {{viewVenta.comValor | currency:'':'symbol':'1.0-0'}}               
                 </td>
                 <td>
                     <a [routerLink]="['../ventasUsuario', viewVenta.usuId, viewVenta.usuNombre]" >
@@ -96,7 +96,7 @@
             <tr>
                <td></td>
                 <td>TOTAL</td>
-                <td>${{total}}</td>
+                <td>${{total | currency:'':'':'1.0-0'}}</td>
                 <td></td>
 
             </tr>

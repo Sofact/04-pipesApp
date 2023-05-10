@@ -17,6 +17,7 @@ export class PagosService {
 
                 
   private urlEndpoint: string = URL_SERVICIOS+'pagos/user';
+  private urlEndpointSave: string = URL_SERVICIOS+'pagos/save';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
           
@@ -29,4 +30,10 @@ export class PagosService {
       )
   
   } 
+
+  savePagos(pagos: Pagos){
+
+    return this.http.post(this.urlEndpointSave, pagos, {headers: this.httpHeaders});
+
+  }
 }

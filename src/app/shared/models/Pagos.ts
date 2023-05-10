@@ -3,7 +3,7 @@ export interface Pagos {
 
     pagId: number,
     pagValor: number,
-    pagFecha: string,
+    pagFecha: string | null,
     usuId: number;
    
 }

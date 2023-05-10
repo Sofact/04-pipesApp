@@ -41,7 +41,7 @@
                     {{viewPago.pagFecha | date: 'dd/MM/yyyy'}}
                 </td>
                 <td>
-                    {{viewPago.pagValor}}
+                    {{viewPago.pagValor | currency:'':'symbol':'1.0-0'}}
                 </td>
                 <td>
                     {{viewPago.cliBanco}} 

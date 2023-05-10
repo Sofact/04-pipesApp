@@ -78,7 +78,7 @@
                     {{viewPagos.pagFecha | date: 'dd/MM/yyyy'}}
                 </td>
                 <td>
-                    ${{viewPagos.pagValor}}
+                    ${{viewPagos.pagValor | currency:'':'':'1.0-0'}}
                 </td>
                 <td>
                     {{viewPagos.cliBanco}}
@@ -93,7 +93,7 @@
                 <td></td>
        
                 <td>TOTAL</td>
-                <td>${{total}}</td>
+                <td>${{total | currency:'':'':'1.0-0'}}</td>
                 <td></td>
                 <td></td>
             </tr>

@@ -68,9 +68,10 @@ export class GeneradorComponent implements OnInit {
     .subscribe((data: any) => {
       const blob = new Blob([data], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
-      this.refreshPage();
+     
+      
       window.open(url);
-
+      location.reload()
     });
 
    

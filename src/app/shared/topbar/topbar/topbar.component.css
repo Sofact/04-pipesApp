@@ -1,0 +1,12 @@
+.hero_section h1 {
+    font-size: 85px;
+    color: #40ef37;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+  } 
