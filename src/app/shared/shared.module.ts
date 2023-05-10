@@ -10,11 +10,17 @@ import { FormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CustomerService } from './customer.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { PoliticaComponent } from './politica/politica.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
-    TableComponent
+    TableComponent,
+    HomeComponent,
+    HomeAdminComponent,
+    PoliticaComponent
   ],
   imports: [
 

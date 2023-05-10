@@ -94,6 +94,17 @@ console.log("los valores a enviar", username, password);
       queryParams: {}
     });
   }
+  
+  logoutClientes(){
+    
+    this.token='';
+    this.user=null;
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.router.navigate(['/auth/loginCliente'],{
+      queryParams: {}
+    });
+  }
 
   
   saveUser(user: User): Observable<User>{

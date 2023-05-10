@@ -24,10 +24,25 @@ import { VentasUsuarioComponent } from './ventas/pages/ventas-usuario/ventas-usu
 import { PagosComponent } from './pagos/pagos.component';
 import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
 import { AppMainComponent } from './app.main/app.main.component';
+import { HomeComponent } from './shared/home/home.component';
+import { HomeAdminComponent } from './shared/home-admin/home-admin.component';
+import { PoliticaComponent } from './shared/politica/politica.component';
 
 const routes: Routes = [
 
-
+  {
+    path:'home',
+    //component: LoginComponent
+     component: HomeComponent
+  },
+  {
+    path:'admin',
+    component: HomeAdminComponent
+  },
+  {
+    path:'politica',
+    component: PoliticaComponent
+  },
   {
     path:'auth',
     //component: LoginComponent

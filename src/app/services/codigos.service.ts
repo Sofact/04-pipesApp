@@ -14,7 +14,7 @@ export class CodigosService {
 
 
   private urlEndpoint: string = URL_SERVICIOS+'codigos/all';
-  //private urlSaveEndpoint: string = URL_SERVICIOS+'codigos/save';
+  private urlVaidateEndpoint: string = URL_SERVICIOS+'codigos/validate';
   private urlSaveEndpoint: string = URL_SERVICIOS+'generate-pdf';
   private urlUpdateEndpoint: string = URL_SERVICIOS+'codigos/update';
 
@@ -48,6 +48,11 @@ export class CodigosService {
           this._refresh$.next();
         })
       );
+  }
+
+  validarCodigo(codigo: string | null): Observable<boolean>{
+
+    return this.http.get<boolean>(this.urlVaidateEndpoint+"/"+codigo);
   }
 
   saveCodigo(codigo: Codigo){

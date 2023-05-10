@@ -39,6 +39,14 @@ export class ViewComisionService {
       );
   }
 
+  getViewComisionEstadoTotalSolo(estado: string): Observable<number>{
+    return this.http.get<number>(this.urlEndpointEstadosTotal+"/"+estado).pipe(
+
+      map(response => response as number)
+
+      );
+  }
+
   getLastComision(usuId: string): Observable<ViewComision>{
     return this.http.get<ViewComision>(this.urlEndpointLastCom+"/"+usuId).pipe(
 

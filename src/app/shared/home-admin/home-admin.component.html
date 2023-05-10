@@ -1,0 +1,55 @@
+<p-menubar >
+    
+    <ng-template pTemplate="start">
+        <h1 lcass="hero_section">Selly Ca$h</h1>
+        <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+    </ng-template>
+    <ng-template >
+       
+
+    </ng-template>
+    <ng-template pTemplate="end">
+       
+
+    </ng-template>
+</p-menubar>
+
+<br>
+<body>
+<div class="card">
+    <div class="flex card-container indigo-container">
+        <div class="flex-1 h-4rem  text-white font-bold text-center p-4 border-round"></div>
+        <div class="flex-1 h-4rem mx-4">
+          <div>
+            <p-card header="Selly Ca$h" subheader="Administración" [style]="{ width: '560px' }">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                </ng-template>
+                <p>
+                    Selly Cash te permite generar y administrar las comisiones por venta de los produtos de Vitaliah!!
+                </p>
+                <ng-template pTemplate="footer" >
+                    <p-button label="Ingresar" icon="pi pi-check" (click)="logout()" [style]="{'width': '100%'}"></p-button>
+                    
+                    <br>
+                    <a [routerLink]="'/politica'" class="txt2">
+                         Conozca aquí nuestra Política de privacidad
+                    </a>
+                </ng-template>
+            </p-card>
+        </div>
+        </div>
+        <div class="flex-1 h-4rem  text-white font-bold text-center p-4 border-round"></div>
+    </div>
+</div>
+</body>
+<div>
+    <footer>
+        <section class="container-fluid footer_section">
+           
+            <p>Derechos reservados VITALIAH 2023 Selly Cash</p>
+          </section>
+
+    </footer>
+
+</div>

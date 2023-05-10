@@ -64,6 +64,9 @@ import { HistorialComponent } from './pagos/historial/historial.component';
 import { PresentacionComponent } from './administracion/pages/codificacion/presentacion/presentacion.component';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { TopbarComponent } from './shared/topbar/topbar/topbar.component';
+import { PerfilClienteComponent } from './usuario/dashboard/perfil-cliente/perfil-cliente.component';
+
+
 
 registerLocaleData( localEs );
 registerLocaleData( localFr );
@@ -103,7 +106,9 @@ registerLocaleData( localFr );
         TablePagosUsuarioComponent,
         PagosComponent,
         PendientesComponent,
-        HistorialComponent
+        HistorialComponent,
+        PerfilClienteComponent
+        
     ],
     exports: [
         SharedModule

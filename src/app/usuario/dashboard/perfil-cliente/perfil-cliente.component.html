@@ -1,0 +1,28 @@
+
+<p-card header={{viewPerfil.usuCorreo}} subheader={{viewPerfil.covNombre}} [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+       
+    </ng-template>
+    <hr>
+    <h4>INFORMACIÓN PERSONAL</h4>
+    <hr>
+    <h5>E-mail</h5>
+        <input type="text" pInputText [(ngModel)]="viewPerfil.usuNombre"> 
+       
+    <h5>Celular</h5>
+        <input type="text" pInputText [(ngModel)]="celular"> 
+     <hr>  
+     <h4>DATOS CUENTA BANCARIA</h4>
+     <hr>
+    <h5>Banco</h5>
+        <input type="text" pInputText [(ngModel)]="viewPerfil.cliBanco"> 
+    <h5>Tipo cuenta</h5>
+        <input type="text" pInputText [(ngModel)]="viewPerfil.cliTipoCuenta"> 
+    <h5># cuenta</h5>
+        <input type="text" pInputText [(ngModel)]="viewPerfil.cliNumCuenta"> 
+  
+    <ng-template pTemplate="footer">
+        <p-button label="Editar" icon="pi pi-check"></p-button>
+        
+    </ng-template>
+</p-card>

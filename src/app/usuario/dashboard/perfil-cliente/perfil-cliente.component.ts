@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Usuario } from 'src/app/shared/models/Usuario';
-import { UsuariosService } from '../../../../services/usuarios.service';
-import { ComisionService } from '../../../../services/comision.service';
-import { ConvenioService } from '../../../../services/convenio.service';
-import { Convenio } from 'src/app/shared/models/convenio';
+import { ConvenioService } from 'src/app/services/convenio.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import { ViewPerfil } from 'src/app/shared/models/ViewPerfil';
 
 @Component({
-  selector: 'app-perfil_ventas',
-  templateUrl: './perfil.component.html'
+  selector: 'app-perfil-cliente',
+  templateUrl: './perfil-cliente.component.html',
+  styleUrls: ['./perfil-cliente.component.css']
 })
-export class PerfilComponent implements OnInit {
+export class PerfilClienteComponent implements OnInit {
+
 
   usuId: string | null ='';
   id: number = 0;
+  miVariable: number = 0;
 
   viewPerfil:  ViewPerfil = {
 
@@ -40,13 +40,12 @@ export class PerfilComponent implements OnInit {
                private convenioService: ConvenioService,
                   private _router: ActivatedRoute
     ) { 
-      this.usuId =this._router.snapshot.paramMap.get( 'id' ) ;
-      this.id = Number(this.usuId);
+      this.miVariable = Number(localStorage.getItem('id'));
     }
 
   ngOnInit(): void {
 
-    this.convenioService.getConveniobyId(this.id)
+    this.convenioService.getConveniobyId(this.miVariable)
     .subscribe( (response) => {
     this.viewPerfil = response;
     console.log(response);

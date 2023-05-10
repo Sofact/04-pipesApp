@@ -84,7 +84,7 @@ export class PendientesComponent implements OnInit {
         this.viewComisiones = respuesta;
       })
 
-      this.viewComisionService.getViewComisionEstadoTotal('pendiente', this.usuId)
+      this.viewComisionService.getViewComisionEstadoTotalSolo('pendiente')
       .subscribe ((respuesta) => {
       
         this.total = respuesta;

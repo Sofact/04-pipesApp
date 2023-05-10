@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CodigosService } from 'src/app/services/codigos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +13,8 @@ export class LoginClientesComponent  {
 
 
   code:string | null='';
+  isValid: boolean= true;
+  codCodigo: string | null='';
 
   miFormulario: FormGroup = this.fb.group(
     {
@@ -23,6 +26,7 @@ export class LoginClientesComponent  {
 constructor( private fb: FormBuilder,
              private authService: AuthService,
              private route: ActivatedRoute,
+             private codigoService: CodigosService,
               private router: Router) {
 
                 this.code =this.route.snapshot.paramMap.get('code');
@@ -52,8 +56,33 @@ login(){
         
         console.log(resp);
         if(!resp.error && resp){
+
           console.log("Ingreso al submit::::", resp);
-          this.router.navigate(['/registro/'+this.code]);
+
+          if(this.code){
+                
+            this.codCodigo =  (this.code.substring(3));
+            console.log("codCodigo::", this.codCodigo);
+            
+          }
+
+          this.codigoService.validarCodigo(this.codCodigo)
+            .subscribe(response => {
+              this.isValid = response;
+              console.log("isvalid::", response);
+              if(this.isValid){
+            
+                this.router.navigate(['/registro/'+this.code]);
+              }else{
+                Swal.fire( 'Atención','El codigo escaneado ya fue redimido', 'warning');
+                this.router.navigate(['/auth/loginCliente']);
+              }
+
+            })
+
+            
+
+          
 
         }else{
           if(resp.error.error == 'Unauthorized'){
