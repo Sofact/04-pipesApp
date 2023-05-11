@@ -1,8 +1,8 @@
 <p-menubar >
     
     <ng-template pTemplate="start">
-        <h1 lcass="hero_section">Selly Ca$h</h1>
-        <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+        <img src="./assets/images/banner.png" alt="Image" width="100%" />
+       
     </ng-template>
     <ng-template >
        
@@ -20,16 +20,32 @@
     <div class="flex card-container indigo-container">
         <div class="flex-1 h-4rem  text-white font-bold text-center p-4 border-round"></div>
         <div class="flex-1 h-4rem mx-4">
-          <div>
-            <p-card header="Selly Ca$h" subheader="Distribuidores" [style]="{ width: '560px' }">
+          <div style= "display: flex;">
+            <p-card header="Registrate "  [style]="{ width: '460px', height: '400px'}">
                 <ng-template pTemplate="header">
-                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                    
                 </ng-template>
                 <p>
-                    Selly Cash te permite generar y administrar las comisiones por venta de los produtos de Vitaliah!!
+                    Puedes ingresar aqui, introducir tus datos, si perteneces a algun convenio y listo!!
                 </p>
                 <ng-template pTemplate="footer" >
-                    <p-button label="Ingresar" icon="pi pi-check" (click)="logout()" [style]="{'width': '100%'}"></p-button>
+                    <a [routerLink]="'/politica'" class="txt2">
+                        Registrate
+                   </a>
+                    
+                    <br>
+                   
+                </ng-template>
+            </p-card>
+            <p-card header="Escanea"  [style]="{ width: '460px', height: '400px'}">
+                <ng-template pTemplate="header">
+                    
+                </ng-template>
+                <p>
+                    "Escanea los codigos que vienen en nuestros productos, estos te direccionarán a un formulario de registro de clientes.
+                </p>
+                <ng-template pTemplate="footer" >
+                    
                     
                     <br>
                     <a [routerLink]="'/politica'" class="txt2">
@@ -37,10 +53,28 @@
                     </a>
                 </ng-template>
             </p-card>
+            <p-card header="Ingresa a la Aplicación" subheader="" [style]="{ width: '460px', height: '400px'}">
+                <ng-template pTemplate="header">
+                    
+                </ng-template>
+                <p>
+                    Conoce el estado de todas tus comisiones y los pagos realizados.
+                </p>
+                <ng-template pTemplate="footer" >
+                    
+                    
+                    <br>
+                    <a [routerLink]="'/politica'" class="txt2">
+                         Ingresa Aqui!
+                    </a>
+                </ng-template>
+            </p-card>
+            
         </div>
         </div>
         <div class="flex-1 h-4rem  text-white font-bold text-center p-4 border-round"></div>
     </div>
+    
 </div>
 </body>
 <div>

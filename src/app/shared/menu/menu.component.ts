@@ -64,7 +64,7 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-globe',
         items: [
           {
-            label: 'Usuarios',
+            label: 'Data Analisis',
             icon: 'pi pi-user ',
             routerLink: 'ordenar'
           },

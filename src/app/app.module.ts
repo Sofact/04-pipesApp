@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ImageModule } from 'primeng/image';
 
 
 import { AppComponent } from './app.component';
@@ -122,6 +123,7 @@ registerLocaleData( localFr );
         CalendarModule,
         CheckboxModule,
         CommonModule,
+        ImageModule,
         RouterModule.forRoot([]),
         BrowserModule,
         BrowserAnimationsModule,
