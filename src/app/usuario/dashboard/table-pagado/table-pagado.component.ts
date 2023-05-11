@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewComisionService } from 'src/app/services/view-comision.service';
+import { ViewPagosService } from 'src/app/services/view-pagos.service';
+import { ViewPagosgroupedService } from 'src/app/services/view-pagosgrouped.service';
 import { Customer, Representative } from 'src/app/shared/customer';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { ViewComision } from 'src/app/shared/models/ViewComision';
+import { ViewPagos } from 'src/app/shared/models/ViewPagos';
+import { ViewPagosGrouped } from 'src/app/shared/models/ViewPagosGrouped';
 
 
 @Component({
@@ -11,14 +15,27 @@ import { ViewComision } from 'src/app/shared/models/ViewComision';
 })
 export class TablePagadoComponent implements OnInit {
 
+
   viewComision!: ViewComision;
   viewComisiones: ViewComision[]=[];
+  comisionesFiltradas: ViewPagos[]=[];
+  ViewPagosGrouped: ViewPagosGrouped[]=[];
 
+  viewPago: ViewPagos[]=[];
   usuId: number=0;
-  
-
 
   total = 0;
+
+  items!: any[];
+
+  selectedItem: any;
+
+  suggestions!: any[];
+  date!: Date;
+
+  search(event:any) {
+      this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+  }
 
 
 
@@ -30,25 +47,26 @@ export class TablePagadoComponent implements OnInit {
 
 
   constructor(private viewComisionService: ViewComisionService,
-                private customerService: CustomerService,
+              private viewPagosgroupedService:  ViewPagosgroupedService,
+              private viewPagosService: ViewPagosService
                 ) { }
 
   ngOnInit() {
 
     this.usuId = Number(JSON.parse(localStorage.getItem("id") ?? ''));
+      this.viewPagosService.getViewPagos()
+        .subscribe( (respuesta)=> {
+        
+          this.viewPago = respuesta
+          this.comisionesFiltradas = this.viewPago.filter(comision=> comision.usuId == this.usuId);
+        })
 
-      this.viewComisionService.getViewComisionEstado('pagado')
-      .subscribe ((respuesta) => {
+      this.viewPagosService.getViewPagosTotal()
+      .subscribe( (response) => {
       
-        this.viewComisiones = respuesta;
-      }) 
-
-      this.viewComisionService.getViewComisionEstadoTotal('pagado', this.usuId)
-      .subscribe ((respuesta) => {
+        this.total = response
+      })
       
-        this.total = respuesta;
-      }) 
-
 
 
      
@@ -57,5 +75,6 @@ export class TablePagadoComponent implements OnInit {
   clear( ) {
       console.log("limpiar");
   }
+
 
 }

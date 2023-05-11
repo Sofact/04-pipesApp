@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ViewComision } from '../shared/models/ViewComision';
 import { URL_SERVICIOS } from '../config/config';
+import { ViewPagosGrouped } from '../shared/models/ViewPagosGrouped';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,15 @@ export class ViewComisionService {
 
       );
   }
+
+  getViewComisionEstadoId(estado: string, usuId: number): Observable<ViewPagosGrouped[]>{
+    return this.http.get<ViewPagosGrouped[]>(this.urlEndpointEstados+"/"+estado+"/"+usuId).pipe(
+
+      map(response => response as ViewPagosGrouped[])
+
+      );
+  }
+
   getViewComisionEstadoTotal(estado: string, usuId: number): Observable<number>{
     return this.http.get<number>(this.urlEndpointEstadosTotal+"/"+estado+"/"+usuId).pipe(
 

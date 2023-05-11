@@ -1,80 +1,99 @@
 <div class="card">
   
-    <p-table #dt1 [value]="viewComisiones" dataKey="id"
+    <div>
+        
+        <div class="card flex flex-column md:flex-row gap-3">
+           <div >
+        <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="search($event)">
+            
+        </p-autoComplete>
+        </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">$</span>
+                <input type="text" pInputText placeholder="Valor a filtrar" />
+                <span class="p-inputgroup-addon">.00</span>
+            </div>
+    
+           <div class="p-inputgroup">
+            
+                <p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar>
+           </div>
+           <div class="p-inputgroup">
+            
+                <p-button label="Descargar" icon="pi pi-download"></p-button>
+    
+           </div>
+        </div>
+        </div>
+    <p-table #dt1 [value]="comisionesFiltradas" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['proDescripcion','proReferencia','proValor']">
         <ng-template pTemplate="caption">
             <div class="flex">
-               <h3>Comisiones pendientes de pago</h3>
+               <h3>Historial de pagos</h3>
             </div>
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th style="min-width:15rem">
                     <div class="flex ">
-                        Producto
+                        Usuario
                         <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex ">
-                        Fecha comisión
-                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:15rem">
-                    <div class="flex ">
                         Fecha de pago
+                        <p-columnFilter type="text" field="proDescripcion" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex ">
+                        Valor Pagado
                         <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex ">
-                        Valor Comision
-                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
-                            
-                        </p-columnFilter>
+                        Información Bancaria
+                        <p-columnFilter type="text" field="proReferencia" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <th style="min-width:15rem">
-                    <div class="flex ">
-                        Estado
-                        <p-columnFilter field="proValor" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
-                            
-                        </p-columnFilter>
-                    </div>
-                </th>
-                             
+                  
                 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-viewComision>
+        <ng-template pTemplate="body" let-viewPagos>
             <tr>
                 <td>
-                    {{viewComision.proDescripcion}}
+                    <a [routerLink]="['../ventasUsuario', viewPagos.usuId, viewPagos.usuNombre]" >
+                        {{viewPagos.usuNombre}}    
+                        </a> 
+                    
+                    <br>
+                    {{viewPagos.usuCorreo}}
                 </td>
                 <td>
-                    {{viewComision.comFecha}}
+                    {{viewPagos.pagFecha | date: 'dd/MM/yyyy'}}
                 </td>
                 <td>
-                    {{viewComision.comFechaPago}}
+                    ${{viewPagos.pagValor | currency:'':'':'1.0-0'}}
                 </td>
                 <td>
-                    {{viewComision.comValor | currency:'':'':'1.0-0'}}                
+                    {{viewPagos.cliBanco}}
+                    <br>
+                    #{{viewPagos.cliNumCuenta}}
                 </td>
-                <td>
-                    {{viewComision.comEstado}}                
-                </td>
-                
+               
             </tr>
         </ng-template>
         <ng-template pTemplate="footer">
             <tr>
                 <td></td>
-                <td></td>
+       
                 <td>TOTAL</td>
-                <td>{{total | currency:'':'':'1.0-0'}}</td>
+                <td>${{total | currency:'':'':'1.0-0'}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -86,3 +105,4 @@
         </ng-template>
     </p-table>
 </div>
+
