@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConvenioService } from 'src/app/services/convenio.service';
+import { MapConvenio } from 'src/app/shared/models/MapConvenio';
 import { Convenio } from 'src/app/shared/models/convenio';
 
 
@@ -9,26 +11,61 @@ import { Convenio } from 'src/app/shared/models/convenio';
 })
 export class ComisionResumenComponent implements OnInit {
 
+  conv: MapConvenio= {
+                 
+                  covId: 0,
+                  covNombre: '',
+                  cov_estado: '',
+                 
+  };
+  convenio: Convenio[]=[];
+  convenioText: string='';
 
-  nombre: string='';
-  convenios: Convenio[]=[{nombre:'Copidrogas', codigo:"asdfa45d", estado:'activo', valor: 0, tipo:'%'},
-                          {nombre:'Ravelo', codigo:"6as5d4fa", estado:'activo', valor: 0, tipo:'%'}];
-  constructor() { }
+  constructor(
+              private conenioService: ConvenioService
+    ){}
 
   ngOnInit(): void {
+
+    this.conenioService.getConvenios()
+    .subscribe( (response) => {
+    this.convenio = response;
+    console.log(response);
+  });
   }
-  editar(){
+
+
+  crearNuevo(){
+
+    console.log(this.convenioText);
+
+    this.conv.covNombre = this.convenioText;
+    this.conv.cov_estado = 'activo';
+
+    console.log("despues ",this.conv.covNombre);
+
+    this.conenioService.SaveConvenio(this.conv)
+    .subscribe( (response: any ) => {
+    
+      console.log(response);
+    });
+
+    location.reload();
+
+  }
+
+  delete (covId: number){
+
+    console.log("covId::", covId);
   
-      console.log("Editar");
-    }
-    borrar(){
-  
-      console.log("Borrando");
-    }
-    crearNuevo(){
-      console.log('Crear convenio', this.nombre);
+    this.conenioService.DeleteConvenio(covId)
+    .subscribe((respuesta) => {
       
-      this.convenios.push({nombre:this.nombre,  codigo:"asdfa45d", estado:'activo', valor: 0, tipo:'%' })
-    }
+      console.log(respuesta);
+      
+    });
+    location.reload();
+   
+  }
 
 }

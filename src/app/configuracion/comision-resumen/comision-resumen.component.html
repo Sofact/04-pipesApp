@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="p-inputgroup">
        
-        <input type="text" [(ngModel)]="nombre" pInputText placeholder="Nombre">   
+        <input type="text" [(ngModel)]="convenioText" pInputText placeholder="Nombre">   
         <button 
         pButton 
         type="button" 
@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="col-12">
-<p-table [value]="convenios" [tableStyle]="{'min-width': '50rem'}">
+<p-table [value]="convenio" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="header">
         <tr>
             <th>Nombre Convenio</th>
@@ -22,16 +22,16 @@
             <th>Acción</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-convenios>
+    <ng-template pTemplate="body" let-convenio>
         <tr>
             
-            <td>{{convenios.nombre}}</td>
-            <td>{{convenios.codigo}}</td>
-            <td>{{convenios.estado}}</td>
-            <td><i class="pi pi-pencil"
-                    (click)="editar()"></i>
-                    <i class="pi pi-delete-left"
-                    (click)="borrar()"></i></td>
+            <td>{{convenio.covNombre}}</td>
+            <td>{{convenio.cov_estado}}</td>
+            <td>
+                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-outlined p-button-rounded p-button-primary"
+                        (click)="delete(convenio.covId)"></button>
+            </td>
+            
         </tr>
     </ng-template>
 </p-table>

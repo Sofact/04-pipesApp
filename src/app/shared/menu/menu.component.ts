@@ -30,11 +30,7 @@ export class MenuComponent implements OnInit {
               routerLink: '../grupos'
             },
             
-            {
-              label: 'Objetivos',
-              icon: 'pi pi-star',
-              routerLink: 'objetivos'
-            }
+           
           ]
       },
       {
@@ -66,7 +62,7 @@ export class MenuComponent implements OnInit {
           {
             label: 'Data Analisis',
             icon: 'pi pi-user ',
-            routerLink: 'ordenar'
+            routerLink: '/ordenar'
           },
           {
             label: 'Codificación',

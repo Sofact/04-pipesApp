@@ -22,7 +22,7 @@ export class TopbarComponent implements OnInit {
   }
 
   logout(){
-   this.authService.logout();
+   this.authService.logoutClientes();
   }
 
 }

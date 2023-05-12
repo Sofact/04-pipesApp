@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Tipos } from '../comision/tipos';
+import { Convenio } from 'src/app/shared/models/convenio';
+import { ConvenioService } from 'src/app/services/convenio.service';
 
 @Component({
   selector: 'app-grupos',
@@ -7,15 +9,19 @@ import { Tipos } from '../comision/tipos';
 })
 export class GruposComponent implements OnInit {
 
-  tipos: Tipos[]=[{name:'Soy', code: '1'}, {name:'Copidrogas', code: '2'}];
-  tipoAjuste: Tipos[]=[{name:'Porcentaje', code: '1'}, {name:'Valor', code: '2'}];
-  
+  convenio: Convenio[]=[];
 
-  @Input() selectedTipo: string='';
-  @Input() selectedTipoAjuste: string='';
-  @Input() value: number= 0;
+  constructor(
+              private conenioService: ConvenioService
+    ){}
 
   ngOnInit(): void {
+
+    this.conenioService.getConvenios()
+    .subscribe( (response) => {
+    this.convenio = response;
+    console.log(response);
+  });
   }
 
   guardar(){
