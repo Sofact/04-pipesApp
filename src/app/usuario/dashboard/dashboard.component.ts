@@ -48,11 +48,31 @@ export class DashboardComponent implements OnInit {
   
       // La cámara está activa, haz algo aquí
       console.log('Cámara activa:', dispositivos);
+
+      this.abrirCamara();
     } catch (error) {
       // No se pudo obtener acceso a la cámara
       console.error('No se pudo obtener acceso a la cámara:', error);
     }
   }
-
+  async abrirCamara() {
+    try {
+      // Obtén acceso a los dispositivos multimedia
+      const dispositivos = await navigator.mediaDevices.getUserMedia({ video: true });
+  
+      // Obtén el elemento HTML donde se mostrará la vista previa de la cámara
+      const video = document.getElementById('video') as HTMLVideoElement;
+  
+      // Asigna la referencia de la cámara al elemento HTML
+      video.srcObject = dispositivos;
+  
+      // Reproduce la vista previa de la cámara
+      video.play();
+    } catch (error) {
+      // No se pudo obtener acceso a la cámara
+      console.error('No se pudo obtener acceso a la cámara:', error);
+    }
+  }
+  
 
 }
