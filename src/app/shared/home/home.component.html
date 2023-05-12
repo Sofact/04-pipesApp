@@ -1,7 +1,7 @@
-<p-menubar >
+<p-menubar width="100%">
     
     <ng-template pTemplate="start">
-        <img src="./assets/images/banner.png" alt="Image" width="100%" />
+        <img src="./assets/images/banner.png" alt="Image" width="full-width-image" />
        
     </ng-template>
     <ng-template >
@@ -29,20 +29,20 @@
                     Puedes ingresar aqui, introducir tus datos, si perteneces a algun convenio y listo!!
                 </p>
                 <ng-template pTemplate="footer" >
-                    <a [routerLink]="'/politica'" class="txt2">
+                    <a [routerLink]="'/auth/registro'" class="txt2">
                         Registrate
-                   </a>
+                    </a>
                     
                     <br>
                    
                 </ng-template>
             </p-card>
-            <p-card header="Escanea"  [style]="{ width: '460px', height: '400px'}">
+            <p-card header="Política de privacidad"  [style]="{ width: '460px', height: '400px'}">
                 <ng-template pTemplate="header">
                     
                 </ng-template>
                 <p>
-                    "Escanea los codigos que vienen en nuestros productos, estos te direccionarán a un formulario de registro de clientes.
+                    Al acceder aceptas nuestra política de privacidad, a continuación podras acceder a la política completa para su conocimiento.
                 </p>
                 <ng-template pTemplate="footer" >
                     
@@ -64,8 +64,8 @@
                     
                     
                     <br>
-                    <a [routerLink]="'/politica'" class="txt2">
-                         Ingresa Aqui!
+                    <a [routerLink]="'/auth/loginCliente'" class="txt2">
+                        Ingresa aquí
                     </a>
                 </ng-template>
             </p-card>

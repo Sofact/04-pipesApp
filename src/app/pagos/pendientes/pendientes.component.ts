@@ -126,7 +126,7 @@ export class PendientesComponent implements OnInit {
     .subscribe ((respuesta) => {
 
       this.viewPagosGrouped = respuesta;
-      console.log("REsp::", this.date, this.viewPagosGrouped);
+      console.log("REsp::", this.formattedDate, this.viewPagosGrouped);
 
       this.seleccionados = this.viewPagosGrouped.map(({ usu_id, user_email }) => ({ usu_id, user_email }));
 

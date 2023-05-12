@@ -11,6 +11,7 @@ export class ViewPagosService {
 
   private urlEndpoint: string = URL_SERVICIOS+'pagos/all';
   private urlEndpointTotal: string = URL_SERVICIOS+'pagos/total';
+  private urlEndpointTotalId: string = URL_SERVICIOS+'pagos/totalId';
   private httpHeaders = new HttpHeaders()
           .append('Content-Type', 'Application/json')
           .append('Access-Control-Allow-Origin', 'http://208.109.37.247:80')
@@ -39,6 +40,14 @@ export class ViewPagosService {
   getViewPagosTotal(): Observable<number>{
   
     return this.http.get<number>(this.urlEndpointTotal, {headers: this.httpHeaders}).pipe(
+      
+        map(result => result as number)
+      )
+  }
+
+  getViewPagosTotalId(id: number): Observable<number>{
+  
+    return this.http.get<number>(this.urlEndpointTotalId+"/"+id, {headers: this.httpHeaders}).pipe(
       
         map(result => result as number)
       )

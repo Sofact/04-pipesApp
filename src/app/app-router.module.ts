@@ -30,7 +30,7 @@ import { PoliticaComponent } from './shared/politica/politica.component';
 
 const routes: Routes = [
 
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path:'home',
     //component: LoginComponent

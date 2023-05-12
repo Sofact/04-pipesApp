@@ -61,9 +61,10 @@ export class TablePagadoComponent implements OnInit {
           this.comisionesFiltradas = this.viewPago.filter(comision=> comision.usuId == this.usuId);
         })
 
-      this.viewPagosService.getViewPagosTotal()
-      .subscribe( (response) => {
+      this.viewPagosService.getViewPagosTotalId(this.usuId)
+      .subscribe( (response: any) => {
       
+        console.log("el Total",response);
         this.total = response
       })
       
