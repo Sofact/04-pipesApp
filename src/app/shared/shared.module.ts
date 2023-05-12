@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ImageModule } from 'primeng/image';
 
 import { MenuComponent } from './menu/menu.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
@@ -30,7 +31,8 @@ import { PoliticaComponent } from './politica/politica.component';
     FormsModule,
     ProgressBarModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ImageModule
   ],
   exports:[
     MenuComponent,
