@@ -41,7 +41,18 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  async solicitarCamara() {
+    try {
+      // Obtén acceso a los dispositivos multimedia
+      const dispositivos = await navigator.mediaDevices.getUserMedia({ video: true });
   
+      // La cámara está activa, haz algo aquí
+      console.log('Cámara activa:', dispositivos);
+    } catch (error) {
+      // No se pudo obtener acceso a la cámara
+      console.error('No se pudo obtener acceso a la cámara:', error);
+    }
+  }
 
 
 }
