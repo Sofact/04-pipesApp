@@ -45,7 +45,7 @@ export class TableClientesComponent implements OnInit {
 
       this.viewVentasService.getViewVentas()
         .subscribe( (respuesta ) => {
-          this.viewVentas = respuesta.reverse();
+          this.viewVentas = respuesta.sort((a, b) => b.comId - a.comId);
         })
 
         this.viewVentasService.getViewVentasTotal()
