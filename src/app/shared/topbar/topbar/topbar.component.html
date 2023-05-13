@@ -1,19 +1,22 @@
 <p-menubar >
     
     <ng-template pTemplate="start">
-        <a href="/dashboard"><h1 lcass="hero_section">Selly Ca$h</h1></a>
+        <a href="{{ruta}}"><h1 lcass="hero_section">Selly Ca$h</h1></a>
         
-        <a href="/dashboard"><img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" /></a>
+        <a href="{{ruta}}"><img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" /></a>
     </ng-template>
-    <ng-template >
+
+   
+       
         <div><h1>Buen día {{user}}</h1></div>
 
-    </ng-template>
     <ng-template pTemplate="end">
+
+      
         <div>Buen día {{user}}   
             
 
-            <p-button label="Login" styleClass="p-button-raised p-button-text p-button-info" (click)="logout()"></p-button>
+            <p-button label="Logout" styleClass="p-button-raised p-button-text p-button-info" (click)="logout()"></p-button>
 
            </div>
 

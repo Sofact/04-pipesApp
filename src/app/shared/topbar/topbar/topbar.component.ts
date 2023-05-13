@@ -12,13 +12,25 @@ export class TopbarComponent implements OnInit {
 
   user: string | null = '';
   id: string | null='';
+  role: boolean = false;
+  ruta: string = '';
 
   ngOnInit(): void {
 
     this.user = this.authService.getUser();
     this.id = this.authService.getId();
 
+    if(this.authService.getRole()== '1'){
+    
+      console.log("verdaero");
+      this.ruta = '/dashboard';
+    }
+    else{
+      this.ruta = '/userDashboard';
+    }
+   
     console.log(this.user);
+    console.log(this.role);
   }
 
   logout(){
