@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { PoliticaComponent } from './politica/politica.component';
 
+import { CarouselModule } from 'primeng/carousel';
+import { ProductService } from './home/productService';
+
 @NgModule({
   declarations: [
     MenuComponent,
@@ -32,7 +35,8 @@ import { PoliticaComponent } from './politica/politica.component';
     ProgressBarModule,
     HttpClientModule,
     CommonModule,
-    ImageModule
+    ImageModule,
+    CarouselModule
   ],
   exports:[
     MenuComponent,
@@ -47,7 +51,8 @@ import { PoliticaComponent } from './politica/politica.component';
   providers:[
   
     CustomerService,
-    DatePipe
+    DatePipe,
+    ProductService
   ]
 })
 export class SharedModule { }

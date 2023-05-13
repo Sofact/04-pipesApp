@@ -54,7 +54,7 @@ export class HistorialComponent implements OnInit {
       this.viewPagosService.getViewPagos()
         .subscribe( (respuesta)=> {
         
-          this.viewPago = respuesta
+          this.viewPago = respuesta.reverse();
         })
 
       this.viewPagosService.getViewPagosTotal()
