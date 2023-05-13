@@ -106,7 +106,12 @@ export class PendientesComponent implements OnInit {
           return item.sum >= this.precioMinimo;
 
         });
-       
+        this.total =0;
+       this.pagosFiltrados.forEach(pagos => {
+      
+          this.total += pagos.sum;
+          console.log(this.total);
+      })
 
          
       })
@@ -136,6 +141,12 @@ export class PendientesComponent implements OnInit {
         return item.sum >= this.precioMinimo;
 
       });
+      this.total =0;
+      this.pagosFiltrados.forEach(pagos => {
+      
+        this.total += pagos.sum;
+        console.log(this.total);
+    })
      
 
        
