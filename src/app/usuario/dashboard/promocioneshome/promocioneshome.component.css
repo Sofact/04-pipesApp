@@ -1,0 +1,9 @@
+.centered-text {
+    text-align: center;
+  }
+    .centered-container {
+        display: flex;
+        justify-content: center;
+
+        /* Opcional: ajusta la altura del contenedor según tus necesidades */
+  }
