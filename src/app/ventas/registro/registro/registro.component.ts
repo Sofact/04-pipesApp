@@ -35,7 +35,7 @@ export class RegistroComponent {
       cliNombre: [' ', [Validators.required]],
       cliCedula: [' ', [ Validators.minLength(6)]],
       cliCelular: [' ',[ Validators.minLength(10)]],
-      cliFecha: [' ',[ Validators.required]],
+    //  cliFecha: [' ',[ Validators.required]],
       cliSexo: ['', [ Validators.required]]
       
     }
@@ -78,7 +78,7 @@ constructor(  private clienteService :ClientesService,
       console.log("la cadena::", this.codCodigo);
 
       this.codigoService.updateCodigo(this.codCodigo)
-      .subscribe(response =>this.router.navigateByUrl('/userDashboard'));
+      .subscribe(response =>this.router.navigateByUrl('/promocion'));
     });
 /*
     console.log("El cliente guardado::", this.cliente);

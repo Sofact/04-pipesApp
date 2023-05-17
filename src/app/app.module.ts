@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ImageModule } from 'primeng/image';
-
 
 
 import { AppComponent } from './app.component';
@@ -67,7 +65,8 @@ import { PresentacionComponent } from './administracion/pages/codificacion/prese
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { TopbarComponent } from './shared/topbar/topbar/topbar.component';
 import { PerfilClienteComponent } from './usuario/dashboard/perfil-cliente/perfil-cliente.component';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData( localEs );
@@ -111,9 +110,12 @@ registerLocaleData( localFr );
         HistorialComponent,
         PerfilClienteComponent
         
+        
     ],
     exports: [
         SharedModule
+        
+       
     ],
     providers: [authInterceptorProviders
        // { provide: LOCALE_ID, useValue: 'es-CO' }
@@ -121,12 +123,12 @@ registerLocaleData( localFr );
     bootstrap: [AppComponent],
     imports: [
         AutoCompleteModule,
+      //  BrowserModule,
         CalendarModule,
         CheckboxModule,
         CommonModule,
         ImageModule,
         RouterModule.forRoot([]),
-        BrowserModule,
         BrowserAnimationsModule,
         AppRouterModule,
         SliderModule,
@@ -138,6 +140,7 @@ registerLocaleData( localFr );
         SharedModule,
         HttpClientModule,
         CheckboxModule
+        
     ]
 }
 )

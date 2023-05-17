@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
@@ -10,6 +11,10 @@ import { RegisterDataComponent } from './pages/register-data/register-data.compo
 import { LoginClientesComponent } from './pages/login-clientes/login-clientes.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { RestaurarContraComponent } from './pages/restaurar-contra/restaurar-contra.component';
+
+
+import { AutoCompleteModule } from 'primeng/autocomplete';
+
 
 
 
@@ -27,7 +32,10 @@ import { RestaurarContraComponent } from './pages/restaurar-contra/restaurar-con
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AutoCompleteModule
   ],
   exports:[
     ReactiveFormsModule,

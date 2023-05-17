@@ -27,6 +27,7 @@ import { AppMainComponent } from './app.main/app.main.component';
 import { HomeComponent } from './shared/home/home.component';
 import { HomeAdminComponent } from './shared/home-admin/home-admin.component';
 import { PoliticaComponent } from './shared/politica/politica.component';
+import { PromocionesComponent } from './usuario/dashboard/promociones/promociones.component';
 
 const routes: Routes = [
 
@@ -80,6 +81,7 @@ const routes: Routes = [
     { path: 'tax',component: AdministracionComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'userDashboard', component: DashboardComponent },
+    { path: 'promocion', component: PromocionesComponent },
     { path: 'ventasUsuario/:id/:nombre', component: VentasUsuarioComponent },
     { path: 'pagos',component: PagosComponent },
     { path: 'registro/:code',component: RegistroComponent }

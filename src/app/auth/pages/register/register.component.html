@@ -79,10 +79,13 @@
     <div class="wrap-input100">
         <span class="label-input100">Municipio</span>
         <br>
-        <p-dropdown [options]="municipio" [(ngModel)]="selectedMunicipio" 
-                    formControlName="municipioReg" 
-                    optionLabel="nombre"></p-dropdown>
+      
 
+        <p-autoComplete [suggestions]="filteredCities" 
+                        field="munDescripcion" 
+                        (completeMethod)="filterCities($event)"
+                        formControlName="municipioReg" 
+                        ></p-autoComplete>
        
         <span class="focus-input100"></span>
     </div>

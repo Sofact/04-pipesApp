@@ -61,7 +61,7 @@ export class ComisionResumenComponent implements OnInit {
     this.conenioService.DeleteConvenio(covId)
     .subscribe((respuesta) => {
       
-      console.log(respuesta);
+      console.log("En el delete",respuesta);
       
     });
     location.reload();

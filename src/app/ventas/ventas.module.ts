@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -57,7 +57,6 @@ import { RegistroComponent } from './registro/registro/registro.component';
         VentasRoutingModule,
         SharedModule,
         FormsModule,
-        BrowserModule,
         ReactiveFormsModule
         
     ]
