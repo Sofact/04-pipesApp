@@ -39,6 +39,18 @@ export class ProductService {
                 quantity: 2,
                 inventoryStatus: 'LOWSTOCK',
                 rating: 3
+            },
+            {
+                id: '1002',
+                code: 'zz21cz3c1',
+                name: 'Promociones',
+                description: 'Promoción del mes de mayo',
+                image: 'promo.png',
+                price: 79,
+                category: '/promocionhome',
+                quantity: 2,
+                inventoryStatus: 'LOWSTOCK',
+                rating: 3
             }
             
         ];
