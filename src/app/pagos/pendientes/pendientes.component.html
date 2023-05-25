@@ -89,11 +89,10 @@
                     <p-checkbox [(ngModel)]="pagosFiltrados.user_nombre" (onChange)="checker($event, pagosFiltrados)" name="{{pagosFiltrados.user_nombre}}"   [binary]="true"  ></p-checkbox>
                 </td>
                 <td>
-                    <a [routerLink]="['../ventasUsuario', pagosFiltrados.user_id, pagosFiltrados.user_nombre]" >
-                        {{pagosFiltrados.usu_nombre}}    
+                    <a [routerLink]="['../ventasUsuario', pagosFiltrados.usu_id, pagosFiltrados.user_name]" >
+                        {{pagosFiltrados.user_email}}     
                         </a> 
-                    <br>
-                    {{pagosFiltrados.user_email}} 
+                        
                 </td>
                 <td>
                     ${{pagosFiltrados.sum | currency:'':'':'1.0-0'}}
