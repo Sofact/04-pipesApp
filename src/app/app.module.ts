@@ -67,6 +67,7 @@ import { TopbarComponent } from './shared/topbar/topbar/topbar.component';
 import { PerfilClienteComponent } from './usuario/dashboard/perfil-cliente/perfil-cliente.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogModule } from 'primeng/dialog';
 
 
 registerLocaleData( localEs );
@@ -139,7 +140,8 @@ registerLocaleData( localFr );
         FormsModule,
         SharedModule,
         HttpClientModule,
-        CheckboxModule
+        CheckboxModule,
+        DialogModule
         
     ]
 }

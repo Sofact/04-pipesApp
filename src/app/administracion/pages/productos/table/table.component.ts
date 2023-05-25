@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class TableComponent implements OnInit {
 
+  productor: Producto[]=[];
   producto!: Producto;
   productos: Producto[]=[];
 
@@ -34,6 +35,11 @@ export class TableComponent implements OnInit {
   borrado:  number = 0;
 
   suscription!: Subscription;
+
+  displayModal = false;
+  nombre: string= '';
+  referencia: string = '';
+  valor: number = 0;
 
   constructor( private router: Router,
                 private customerService: CustomerService,
@@ -91,6 +97,40 @@ export class TableComponent implements OnInit {
 
   clear( ) {
       console.log("limpiar");
+  }
+
+  showModal(id: number){
+    this.displayModal = true;
+
+    this.productosService.getProductos()
+    .subscribe ((respuesta) => {
+    
+      console.log(respuesta);
+
+      this.productor = respuesta.filter(item => item.proId === id);
+      this.nombre=this.productor[0].proDescripcion;
+      this.referencia = this.productor[0].proReferencia;
+      this.valor = this.productor[0].proValor;
+
+      
+
+    }) 
+
+    console.log(id);
+  }
+  hideModal(){
+
+
+    this.productor[0].proDescripcion= this.nombre;
+    this.productor[0].proReferencia= this.referencia;
+    this.productor[0].proValor = this.valor;
+    this.productosService.UpdateProductos(this.productor[0])
+    .subscribe( (respuesta) => {
+    
+      console.log(respuesta);
+    })
+    this.displayModal = false;
+    console.log("hide", this.productor);
   }
 
 }

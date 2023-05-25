@@ -12,6 +12,7 @@ export class ProductosService {
 
   private urlEndPoint: string = URL_SERVICIOS+'productos/all';
   private urlSaveEndPoint: string = URL_SERVICIOS+'productos/save';
+  private urlUpdateEndPoint: string = URL_SERVICIOS+'productos/update';
   private urlEndpointDelete: string = URL_SERVICIOS+'productos/op';
 
   private httpHeaders = new HttpHeaders()
@@ -40,6 +41,17 @@ export class ProductosService {
   SaveProductos(producto: Producto): Observable<Producto>{
   
     return this.http.post<Producto>(this.urlSaveEndPoint, producto, {headers: this.httpHeaders}).pipe(
+      
+        tap(() => {
+          this._refresh$.next();
+        })
+      )
+    
+  }
+
+  UpdateProductos(producto: Producto): Observable<Producto>{
+  
+    return this.http.put<Producto>(this.urlUpdateEndPoint, producto, {headers: this.httpHeaders}).pipe(
       
         tap(() => {
           this._refresh$.next();

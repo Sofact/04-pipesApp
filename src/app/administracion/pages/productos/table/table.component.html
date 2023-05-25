@@ -49,6 +49,8 @@
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-times" class="p-button-outlined p-button-rounded p-button-primary"
                             (click)="delete(producto.proId)"></button>
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-outlined p-button-rounded p-button-primary"
+                            (click)="showModal(producto.proId)"></button>
                 </td>
                 
             </tr>
@@ -60,3 +62,36 @@
         </ng-template>
     </p-table>
 </div>
+
+<p-dialog header="Editar productos" [(visible)]="displayModal">
+    <!-- Contenido de la ventana modal -->
+    <p>¡Puede modificar los siguientes elementos del producto!</p>
+    <hr>
+    <br>
+    <tr>
+        <th style="min-width:15rem">
+            <div class="flex ">
+                Producto  .
+                <input type="text" style="border: 1px solid black;"  pInputText [(ngModel)]="nombre" />
+            </div>
+        </th>
+        <th style="min-width:15rem">
+            <div class="flex ">
+                . Referencia .
+                <input type="text" style="border: 1px solid black;" pInputText [(ngModel)]="referencia" />
+            </div>
+        </th>
+        <th style="min-width:15rem">
+            <div class="flex ">
+                . Valor .
+                <input type="text" style="border: 1px solid black;" pInputText [(ngModel)]="valor" />
+            </div>
+        </th>
+                     
+        
+    </tr>
+    <br>
+   
+    <p-button label="Actualizar" (click)="hideModal()"></p-button>
+    
+  </p-dialog>
