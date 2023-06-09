@@ -74,7 +74,7 @@ login(){
             
                 this.router.navigate(['/registro/'+this.code]);
               }else{
-                Swal.fire( 'Atención','El codigo escaneado ya fue redimido', 'warning');
+                Swal.fire( 'Atención','El codigo escaneado ya fue redimido o es invalido', 'warning');
                 this.router.navigate(['/auth/loginCliente']);
               }
 
